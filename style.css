@@ -1,0 +1,34 @@
+body {
+    overflow: hidden;
+    margin: 0;
+}
+
+#app {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    column-count: 1;
+    grid-template-columns: 100%;
+    grid-template-rows: 7% 88% 5%;
+} 
+
+#bar {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #f00;
+}
+
+#main {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#footer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #0f0;
+}
