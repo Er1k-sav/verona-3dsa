@@ -7,12 +7,12 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-app.get("/src/", (req, res) => {
-    res.sendFile(__dirname + "/src/index.html");
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/index.html");
     res.type("html");
 });
 
-app.get("/src/style.css", (req, res) => {
+app.get("/src/assets/style.css", (req, res) => {
     res.sendFile(__dirname + "/src/assets/style.css");
     res.type("css");
 });
