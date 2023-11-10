@@ -1,7 +1,8 @@
-**👓SITO VERONA 3DSA**  
+# **👓SITO VERONA 3DSA**
 
-Link: <https://verona-3dsa.onrender.com/>
-
+**DATE:** 04/11/2023
+**DEVS:** FApew, Er1k
+**Link:** <https://verona-3dsa.onrender.com/>
 
 **🤔Che cos'è?**
 ---
