@@ -10,24 +10,14 @@ body {
     display: grid;
     column-count: 1;
     grid-template-columns: 100%;
-    grid-template-rows: 15% 80% 5%;
-    background-color: #121319;
+    grid-template-rows: 7% 88% 5%;
 } 
-
-#widjet {
-    width: 96%;
-    height: 42%;
-    background-color: #2b2c38;
-    border-radius: 5px;
-    margin: 2%;
-    box-shadow: 0em 2px 0.4em #3f3742;
-}
 
 #bar {
     position: relative;
     width: 100%;
     height: 100%;
-    background-color: transparent;
+    background-color: #f00;
 }
 
 #main {
@@ -40,5 +30,5 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
-    background-color: transparent;
+    background-color: #0f0;
 }
