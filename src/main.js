@@ -1,5 +1,5 @@
-import * as THREE from 'https://cdn.skypack.dev/three'
-import WebGL from 'three/addons'
+import * as THREE from 'three'
+import WebGL from 'three/addons/capabilities/WebGL.js'
 
 if ( WebGL.isWebGLAvailable() ) {
 
