@@ -7,18 +7,23 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/index.html");
+app.get("/src/", (req, res) => {
+    res.sendFile(__dirname + "/src/index.html");
     res.type("html");
 });
 
-app.get("/style.css", (req, res) => {
-    res.sendFile(__dirname + "/style.css");
+app.get("/src/style.css", (req, res) => {
+    res.sendFile(__dirname + "/src/assets/style.css");
     res.type("css");
 });
 
-app.get("/main.js", (req, res) => {
-    res.sendFile(__dirname + "/main.js");
+app.get("/src/main.js", (req, res) => {
+    res.sendFile(__dirname + "/src/main.js");
+    res.type("application/javascript");
+});
+
+app.get("/src/script.js", (req, res) => {
+    res.sendFile(__dirname + "/src/script.js");
     res.type("application/javascript");
 });
 
