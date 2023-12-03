@@ -13,16 +13,26 @@
           }
         }
       </script>
-      <script src="src/script.js"></script>
 </head>
 <body>
     <div id="app">
-        <div id="bar">Top Bar</div>
+        <div id="bar"></div>
         <div id="main">
-            Three JS
-            <script type="module" src="./src/main.js"></script>
+            <div id="menu">
+                <div id="menuBox">BANANA COCOBAOBAB</div>
+            </div>
+            <div id="mSvgBox">
+                <svg id="mSvg" width="50" height="50" fill="none" stroke="#353535" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 19 24" xmlns="http://www.w3.org/2000/svg">
+                    <path id="svgLine" d="M5 12h14" transform="rotate(90 10 10)"></path>
+                    <path id="svgArrow1" d="m9 18 6-6-6-6" style="opacity: 0"></path>
+                    <path id="svgArrow2" d="m9 18-6-6 6-6" style="opacity: 0"></path>
+                </svg>
+            </div>
+            <div id="main">
+                <script type="module" src="./src/main.js"></script>
+            </div>
         </div>
-        <footer id="footer">Footer</footer>
     </div>
 </body>
+<script src="src/script.js"></script>
 </html>

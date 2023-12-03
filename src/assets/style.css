@@ -1,3 +1,11 @@
+html {
+    --c1: #892919;
+    --c2: #ffcf70;
+    --c3: #fff0d1;
+    --c4: #cabfa3;
+    --c5: #353535;
+}
+
 body {
     overflow: hidden;
     margin: 0;
@@ -5,30 +13,78 @@ body {
 
 #app {
     position: absolute;
-    height: 100%;
     width: 100%;
+    height: 100%;
     display: grid;
     column-count: 1;
     grid-template-columns: 100%;
-    grid-template-rows: 7% 88% 5%;
-} 
+    grid-template-rows: 6% 94%;
+}
+
+#main {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns:1% 2% 97%;
+    grid-template-rows: 100%;
+    transition: all .3s ease-in-out;
+}
+
+#menu {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: var(--c5);
+}
+
+#menuBox {
+    position: relative;
+    transform: translateX(-20vw);
+    width: 100%;
+    height: 100%;
+    transition: all .3s ease-in-out;
+}
+
+#mSvgBox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#mSvg {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 #bar {
     position: relative;
     width: 100%;
     height: 100%;
-    background-color: #f00;
+    background-color: var(--c1);
 }
 
-#main {
-    position: relative;
-    width: 100%;
-    height: 100%;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-#footer {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-color: #0f0;
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
