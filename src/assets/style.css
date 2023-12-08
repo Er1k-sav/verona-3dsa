@@ -9,7 +9,7 @@ html {
 body {
     overflow: hidden;
     margin: 0;
-    background-color: #cabfa3;
+    background-color: #474747;
 }
 
 #app {
@@ -26,6 +26,10 @@ body {
     height: 100%;
     display: grid;
     transition: all .3s ease-in-out;
+}
+
+#map {
+    position: relative;
 }
 
 #menu {
@@ -70,6 +74,37 @@ body {
     background-color: var(--c1);
 }
 
+#menuBox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+}
+
+#mLogoBox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#mLogo {
+    position: relative;
+    height: 80%;
+    aspect-ratio: 1;
+    background-color: red;
+}
+
+#mSub {
+    background-color: lime;
+}
+
+#mBody {
+    background-color: blue;
+}
+
 @media screen and (max-width: 647px) {
     #app {
         grid-template-rows: 10% 90%;
@@ -82,6 +117,7 @@ body {
 
     #menu {
         grid-row: 3;
+        padding-top: 7vh;
     }
 
     #mSvg {
@@ -99,7 +135,30 @@ body {
     }
 
     #map {
+        width: 100%;
+        height: calc(100% + 5vh);
         grid-row: 1;
+    }
+
+    #menuBox {
+        grid-template-columns: 25% 75%;
+        grid-template-rows: 20% 80%;
+    }
+
+    #mBody {
+        grid-column: span 2;
+    }
+
+    #mLogo {
+        margin: 0% 10% 0% 10%;
+    }
+
+    #mSub {
+        margin: 0% 2% 0% 2%;
+    }
+    
+    #mBody {
+        margin: 5% 2% 5% 2%;
     }
 }
 
@@ -109,8 +168,7 @@ body {
     }
 
     #map {
-        position: relative;
-        width: 100%;
+        width: calc(100% + 2vw);
         height: 100%;
         right: 2vw;
     }
@@ -131,6 +189,19 @@ body {
 
     #svgArrow2 {
         opacity: 0;
+    }
+
+    #menuBox {
+        grid-template-columns: 100%;
+        grid-template-rows: 20% 5% 75%;
+    }
+
+    #mSub {
+        margin: 0% 5% 0% 5%;
+    }
+    
+    #mBody {
+        margin: 5%;
     }
 }
 
