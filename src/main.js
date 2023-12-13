@@ -3,7 +3,6 @@ import * as THREE from 'three'
 import WebGL from 'three/addons/capabilities/WebGL.js'
 import { MapControls } from 'three/addons/controls/MapControls.js';
 
-let bPhone = false
 let resizing = false
 let lastKnownSize = { width: 0, height: 0 }
 
@@ -27,7 +26,7 @@ function init() {
         controls.minDistance = 5
         controls.maxDistance = 10
         controls.zoomToCursor = true
-        controls.maxPolarAngle = 2 * Math.PI / 5.2
+        controls.maxPolarAngle = 2 * Math.PI / 5.7
         controls.maxTargetRadius = 5
 
         let intObject
@@ -41,7 +40,7 @@ function init() {
 
         const mapG = new THREE.BoxGeometry(10, 0, 10)
         const mapM1 = new THREE.MeshStandardMaterial({ color: 0x101010 })
-        const mapSvg = new THREE.TextureLoader().load("https://cdn.discordapp.com/attachments/882315302531125318/1182756588365299712/map.png?ex=6585dae9&is=657365e9&hm=d8309dd744bf477b9e7ff9edd664b09df4fad1f3e22c973c15af39008982a730&")
+        const mapSvg = new THREE.TextureLoader().load("https://media.discordapp.net/attachments/1105172497684508762/1184566164324614289/m3.png?ex=658c7035&is=6579fb35&hm=af8e276b13f61ac314ba627afe90cf6716a31b35b699393db8ad0bc8163798bb&=&format=png&quality=lossless")
         const mapM2 = new THREE.MeshBasicMaterial({ map: mapSvg, transparent: true })
         const map = new THREE.Mesh(mapG, [mapM1, mapM1, mapM2, mapM1, mapM1, mapM1])
         map.name = "map"
@@ -55,21 +54,92 @@ function init() {
         light2.position.set(-3, 0, -10)
         scene.add(light2)
 
-        const towG = new THREE.BoxGeometry(0.5, 2, 0.5)
-        const towM = new THREE.MeshStandardMaterial({ color: 0xffffff })
-        const tow = new THREE.Mesh(towG, towM)
-        tow.position.set(2, 1, 0)
-        tow.rotation.y = 0.3
-        tow.name = "torre"
-        scene.add(tow)
+        /*
+        //TODO: SAN FERMO
+        //TODO: SANT' EUFEMIA
+        //TODO: SANT' ANASTASIA
+        //TODO: TORRE DEI LAMBERTI
+        !TODO: TORRE DEL PALAZZO DELLA RAGIONE
+        //TODO: TORRE DEL GARDELLO
+        //TODO: TORRE DELLA CATENA
+        //TODO: TORRE DI ALBERTO I DELLA SCALA
+        //TODO: CORTE SGARZERIE
+        //TODO: PONTE PIETRA
+        //TODO: PONTE NAVI
+        //TODO: PONTE NUOVO
+        //TODO: DOMUS MERCATORUM
+        //TODO: MADONNA VERONA
+        //TODO: CASE MAZZANTI
+        //TODO: ARCHE SCALIGERE
+        //TODO: PALAZZO DEL CAPITANO
+        //TODO: CASA DI ROMEO
+        //TODO: PALAZZO CANGRANDE
+        //TODO: CASTELLO
+        //TODO: PONTE CATELVECCHIO
+        TODO: MURA
+        TODO: FIUME
+        */
 
-        const brgG = new THREE.BoxGeometry(0.3, 0.2, 0.7)
-        const brgM = new THREE.MeshStandardMaterial({ color: 0xffffff })
-        const brg = new THREE.Mesh(brgG, brgM)
-        brg.position.set(-.2, 0.1, .7)
-        brg.rotation.y = -2.21
-        brg.name = "ponte"
-        scene.add(brg)
+        //* ###############################################
+        //*            STRUTTURE NELLA MAPPA
+        //* ###############################################
+
+        let structures = []
+        let box =  [[0.3, 0.22, 0.5], //FERMO
+                    [0.3, 0.26, 0.6], //EUFEMIA
+                    [0.3, 0.3, 0.6], //ANASTASIA
+                    [0.3, 1.5, 0.3], //LAMBERTI
+                    ////[0.4, 0.2, 0.4], //RAGIONE
+                    [0.2, 1, 0.2], //GARDELLO
+                    [0.2, 0.3, 0.2], //CATENA
+                    [0.2, 0.5, 0.15], //ALBERTO
+                    [0.5, 0.2, 0.3], //SGARZERIE
+                    [0.2, 0.15, 0.5], //PIETRA
+                    [0.2, 0.15, 0.5], //NAVI
+                    [0.2, 0.15, 0.5], //NUOVO
+                    [0.35, 0.2, 0.35], //DOMUS
+                    [0.15, 0.16, 0.15], //MADONNA
+                    [0.35, 0.2, 0.35], //MAZZANTI
+                    [0.15, 0.16, 0.15], //ARCHE
+                    [0.2, 0.2, 0.25], //CAPITANO
+                    [0.2, 0.3, 0.25], //ROMEO
+                    [0.2, 0.3, 0.25], //CANGRANDE
+                    [0.3, 0.8, 0.3], //CASTELLO
+                    [0.2, 0.3, 0.6]] //CASTELVECCHIO
+
+        let pos =  [[3.3, 0.11, 2.94, -0.87], //FERMO
+                    [0.82, 0.13, 0.34, -0.94], //EUFEMIA
+                    [3.2, 0.15, -0.72, -1], //ANASTASIA
+                    [2.5, 0.75, 0.7, 0.6], //LAMBERTI
+                    ////[2.62, 0.1, 0.14, 0.6], //RAGIONE
+                    [1.75, 0.55, 0.34, 0.6], //GARDELLO
+                    [-3.95, 0.15, -0.5, 0.3], //CATENA
+                    [2.95, 0.25, -1.73, -0.8], //ALBERTO
+                    [1.36, 0.1, 0.5, 0.6], //SGARZERIE
+                    [3.32, 0.075, -2, -0.9], //PIETRA
+                    [3.9, 0.075, 2.88, -1.6], //NAVI
+                    [3.9, 0.075, 0.9, -1.5], //NUOVO
+                    [1.86, 0.1, 0.7, 0.6], //DOMUS
+                    [2.2, 0.08, 0.9, 0.6], //MADONNA
+                    [2.3, 0.1, 0.36, 0.6], //MAZZANTI
+                    [2.88, 0.08, 0.38, 0.6], //ARCHE
+                    [2.76, 0.1, 0.56, 0.6], //CAPITANO
+                    [3.2, 0.15, 0.4, 0.6], //ROMEO ([3.1, 0.1, 0.3, 0.6])
+                    [2.76, 0.15, 0.13, 0.6], //CANGRANDE
+                    [-1.3, 0.4, 2.38, 0.6], //CASTELLO
+                    [-1.8, 0.15, 2.15, 0.15]] //CASTELVECCHIO
+
+        for (let i = 0; i < box.length; i++) {
+            const geo = new THREE.BoxGeometry(box[i][0], box[i][1], box[i][2])
+            const mat = new THREE.MeshStandardMaterial({ color: 0xffffff })
+            const mesh = new THREE.Mesh(geo, mat)
+            mesh.position.set(pos[i][0], pos[i][1], pos[i][2])
+            mesh.rotation.y = pos[i][3]
+            scene.add(mesh)
+            structures.push(mesh)
+        }
+
+        //* ###############################################
 
         function updateSize() {
             resizing = true
@@ -110,7 +180,6 @@ function init() {
                     intObject = intersects[0].object
                     intObject.currentHex = intObject.material.color.getHex()
                     intObject.material.color.setHex(0xff0000)
-                    console.log(intObject.name)
                 }
             } else {
                 if (intObject != null) {
@@ -139,7 +208,6 @@ function init() {
 
             mouse.x = (canvasX / rect.width) * 2 - 1;
             mouse.y = - (canvasY / rect.height) * 2 + 1;
-            //console.log(mouse.x, "  ", mouse.y)
         }
         
     } else {
