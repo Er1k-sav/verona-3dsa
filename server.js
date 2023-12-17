@@ -27,6 +27,11 @@ app.get("/src/script.js", (req, res) => {
     res.type("application/javascript");
 });
 
+app.get("/m3.png", (req, res) => {
+    res.sendFile(__dirname + "/m3.png");
+    res.type("image/png");
+});
+
 app.listen(8080);
 
 console.log("App listening on https://localhost:8080/");                                                                                                                                   
