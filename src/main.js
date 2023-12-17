@@ -40,7 +40,7 @@ function init() {
 
         const mapG = new THREE.BoxGeometry(10, 0, 10)
         const mapM1 = new THREE.MeshStandardMaterial({ color: 0x101010 })
-        const mapSvg = new THREE.TextureLoader().load("https://media.discordapp.net/attachments/1105172497684508762/1184566164324614289/m3.png?ex=658c7035&is=6579fb35&hm=af8e276b13f61ac314ba627afe90cf6716a31b35b699393db8ad0bc8163798bb&=&format=png&quality=lossless")
+        const mapSvg = new THREE.TextureLoader().load("../m3.png")
         const mapM2 = new THREE.MeshBasicMaterial({ map: mapSvg, transparent: true })
         const map = new THREE.Mesh(mapG, [mapM1, mapM1, mapM2, mapM1, mapM1, mapM1])
         map.name = "map"
