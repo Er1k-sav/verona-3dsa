@@ -1,16 +1,25 @@
+/** VARIABLES */
+
 html {
     --c1: #892919;
     --c2: #ffcf70;
     --c3: #fff0d1;
     --c4: #cabfa3;
+    --c41:#908873;
     --c5: #353535;
+
+    --f1: 'Hedvig Letters Serif', serif;
+    --f2: 'Poppins', sans-serif;
 }
+
+/**######################*/
 
 body {
     overflow: hidden;
     margin: 0;
     background-color: #474747;
 }
+
 
 #app {
     position: absolute;
@@ -71,7 +80,54 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
-    background-color: var(--c1);
+    display: flex;
+    justify-content: center;
+    background-color: var(--c41);
+}
+
+#Boxbar {
+    position: relative;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 100%;
+}
+
+#bBody {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 100%;
+}
+
+#bTitle {
+    position: relative;
+    font-family: var(--f1);
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+
+#bSearch {
+    position: relative;
+    align-self: center;
+    justify-content: start;
+    margin-left: 2vh;
+    background-color: #3535354f;
+    border-radius: 30px;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#bIISLogo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #menuBox {
@@ -94,20 +150,104 @@ body {
     position: relative;
     height: 80%;
     aspect-ratio: 1;
-    background-color: red;
+    background-color: #cabfa35f;
+    border-radius: 20%;
 }
 
 #mSub {
-    background-color: lime;
+    border: var(--c3) solid;
+    border-width: 2px 0px 2px 0px;
 }
 
 #mBody {
-    background-color: blue;
+    border: var(--c3) solid;
+    border-width: 2px 0px 2px 0px;
 }
 
+#info {
+    position: absolute;
+    height: 100%;
+    justify-self: end;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+
+#infoBox {
+    position: relative;
+    width: 94%;
+    height: 94%;
+    background-color: var(--c4);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 10vh;
+    z-index: 3;
+    border-radius: 10px;
+}
+
+#infoBox::-webkit-scrollbar {
+    width: 10px;
+}
+
+#infoBox::-webkit-scrollbar-thumb {
+    background-color: var(--c5);
+    border-radius: 10px;
+}
+
+#iTitle {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    color: var(--c1);
+    font-family: var(--f1);
+    margin-left: 10px;
+}
+
+#iBody {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    height: fit-content;
+}
+
+#shadow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #0000007f;
+    /*z-index: 2;*/
+    z-index: -1;
+}
+
+/**##############################################################*/
+
+/** ########PHONE######## */
 @media screen and (max-width: 647px) {
     #app {
-        grid-template-rows: 10% 90%;
+        grid-template-rows: 7vh 93%;
+    }
+
+    #Boxbar {
+        width: 100%; 
+        grid-template-columns: 7vh 1fr 7vh;
+    }
+
+    #bBody {
+        grid-template-columns: min-content 7vh;
+    }
+
+    #bSearch {
+        padding: 0.8vh;
+        width: 60%;
+    }
+
+    #bTitle {
+        font-size: 5vh;
+        display: flex;
+        align-items: center;
     }
 
     #main {
@@ -121,9 +261,9 @@ body {
     }
 
     #mSvg {
-        height: fit-content;
+        width: 15%;
         aspect-ratio: 1;
-        transform: rotate(90deg);
+        transform: rotate(90deg); 
     }
 
     #svgLine {
@@ -134,10 +274,8 @@ body {
         opacity: 1;
     }
 
-    #map {
-        width: 100%;
-        height: calc(100% + 5vh);
-        grid-row: 1;
+    #menu {
+        z-index: 2;
     }
 
     #menuBox {
@@ -163,17 +301,48 @@ body {
     #mBody {
         margin: 5% 2% 5% 2%;
     }
-}
 
+    #map {
+        width: 100%;
+        height: calc(100% + 5vh);
+        grid-row: 1;
+    }
+
+    #info {
+        width: 90%;
+        justify-self: center;
+    }
+
+    #iTitle {
+        font-size: 5vh;
+    }
+}
+/**##############################################################*/
+
+/** ########PC######## */
 @media screen and (min-width: 648px) {
     #app {
         grid-template-rows: 6% 94%;
     }
 
-    #map {
-        width: calc(100% + 2vw);
-        height: 100%;
-        right: 2vw;
+    #Boxbar {
+        width: 60%;
+        grid-template-columns: 6vh 1fr 6vh;
+    }
+
+    #bBody {
+        grid-template-columns: min-content 30%;
+    }  
+
+    #bTitle {
+        font-size: 5vh;
+        display: flex;
+        align-items: center;
+    }
+
+    #bSearch {
+        padding: 0.3vw 70% 0.3vw 0.3vw;
+        width: 12%;
     }
     
     #main {
@@ -183,20 +352,17 @@ body {
     
     #menuBox {
         transform: translateX(-20vw);
+        grid-template-columns: 100%;
+        grid-template-rows: 20% 5% 75%;
     }
     
     #mSvg {
-        width: 100%;
-        aspect-ratio: 1;
+        width: max-content;
+        height: max-content;
     }
 
     #svgArrow2 {
         opacity: 0;
-    }
-
-    #menuBox {
-        grid-template-columns: 100%;
-        grid-template-rows: 20% 5% 75%;
     }
 
     #mSub {
@@ -206,8 +372,23 @@ body {
     #mBody {
         margin: 5%;
     }
+
+    #map {
+        width: calc(100% + 2vw);
+        height: 100%;
+        right: 2vw;
+    }
+    
+    #info {
+        width: 50%;
+    }
+    
+    #iTitle {
+        font-size: 4.5vw;
+    }
 }
 
+/** ANIMATIONS */
 @keyframes fadeIn {
     from {
         opacity: 0;

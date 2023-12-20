@@ -1,10 +1,14 @@
 console.log("script.js")
+
+import { names } from "../src/assets/data.js"
+
 const menuButton = document.getElementById("mSvg")
 const svgArrow1 = document.getElementById('svgArrow1');
 const svgArrow2 = document.getElementById('svgArrow2');
 const svgLine = document.getElementById('svgLine');
 var bMenu = false
 var bPhone = false
+var bInfo = false
 if (window.innerWidth < 647) {
     bPhone = true
 }
@@ -66,3 +70,19 @@ menuButton.addEventListener("click", () => {
     }
     console.log(bMenu)
 })
+
+document.getElementById("shadow").addEventListener("click", () => {
+    infoOff()
+    bInfo = !bInfo
+})
+
+function infoOff() {
+    document.getElementById("info").style.visibility = "hidden";
+    document.getElementById("shadow").style.zIndex = -1
+}
+
+export function objClick(obj) {
+    document.getElementById("info").style.visibility = "visible";
+    document.getElementById("iTitle").innerHTML = names[obj.object.name]
+    document.getElementById("shadow").style.zIndex = 2
+}
