@@ -42,8 +42,8 @@ app.get("/src/assets/logo.png", (req, res) => {
     res.type("image/png");
 });
 
-app.get("/src/assets/ISSlogo.png", (req, res) => {
-    res.sendFile(__dirname + "/src/assets/ISSlogo.png");
+app.get("/src/assets/IISlogo.png", (req, res) => {
+    res.sendFile(__dirname + "/src/assets/IISlogo.png");
     res.type("image/png");
 });
 
