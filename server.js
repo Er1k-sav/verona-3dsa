@@ -27,6 +27,11 @@ app.get("/src/script.js", (req, res) => {
     res.type("application/javascript");
 });
 
+app.get("/src/assets/data.js", (req, res) => {
+    res.sendFile(__dirname + "/src/assets/data.js");
+    res.type("application/javascript");
+});
+
 app.get("/src/assets/map.png", (req, res) => {
     res.sendFile(__dirname + "/src/assets/map.png");
     res.type("image/png");
