@@ -32,6 +32,16 @@ app.get("/src/assets/map.png", (req, res) => {
     res.type("image/png");
 });
 
+app.get("/src/assets/logo.png", (req, res) => {
+    res.sendFile(__dirname + "/src/assets/logo.png");
+    res.type("image/png");
+});
+
+app.get("/src/assets/ISSlogo.png", (req, res) => {
+    res.sendFile(__dirname + "/src/assets/ISSlogo.png");
+    res.type("image/png");
+});
+
 app.listen(8080);
 
 console.log("App listening on https://localhost:8080/");                                                                                                                                   

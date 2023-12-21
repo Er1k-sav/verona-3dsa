@@ -9,6 +9,7 @@ const svgLine = document.getElementById('svgLine');
 var bMenu = false
 var bPhone = false
 var bInfo = false
+infoOff()
 if (window.innerWidth < 647) {
     bPhone = true
 }
