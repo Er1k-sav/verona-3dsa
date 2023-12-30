@@ -506,7 +506,7 @@ body {
         width: max-content;
         grid-template-columns: auto auto 1fr;
         grid-template-rows: min-content 1fr;
-        margin: 0.3vh 0px 0px 2vh;
+        margin: 0.25vh 0px 0px 2vh;
     }
 
     #bIsrc {
