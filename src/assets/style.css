@@ -119,11 +119,8 @@ body {
     align-self: start;
     justify-content: start;
     background-color: #736e5f;
-    border-radius: 30px;
+    border-radius: 20px;
     display: grid;
-    grid-template-columns: auto auto 1fr;
-    grid-template-rows: min-content 1fr;
-    margin: 0.5vh 0px 0px 2vh;
     z-index: 2;
 }
 
@@ -148,6 +145,14 @@ body {
 #bSsvg {
     max-width: 2vw;
     min-width: 4vh;
+    align-self: center;
+}
+
+#bSesc {
+    max-width: 2vw;
+    min-width: 4vh;
+    height: min-content;
+    justify-self: end;
 }
 
 #results {
@@ -172,7 +177,13 @@ body {
 
 .result {
     width: fit-content;
-    border-bottom: 1px solid var(--c4);
+    border-bottom: 2px solid var(--c4);
+    transition: all .2s;
+}
+
+.result:hover {
+    scale: 97%;
+    cursor: pointer;
 }
 
 #bIISLogo {
@@ -308,7 +319,7 @@ body {
 /**##############################################################*/
 
 /** ########PHONE######## */
-@media screen and (max-width: 647px) {
+@media screen and (max-width: 768px) {
     
     #app {
         grid-template-rows: 7vh 93%;
@@ -319,19 +330,57 @@ body {
         grid-template-columns: 7vh 1fr 7vh;
     }
 
+    #bLogoBox {
+        background-color: var(--c41);
+        z-index: 3;
+    }
+
     #bBody {
-        grid-template-columns: min-content 7vh;
+        grid-template-columns: 1fr 7vh;
+        transition: all .5s;
+        justify-content: end;
     }
 
     #bSearch {
         padding: 0.8vh;
         width: 60%;
+        height: 60%;
+        grid-template-columns: auto 0% 0%;
+        grid-template-rows: min-content 1fr;
+        border-radius: 10px;
+        margin: 0.5vh 2vw 0% 0%;
+        overflow: hidden;
+        justify-self: end;
+        transition: all .5s;
+        /*z-index: 10;*/
     }
 
     #bTitle {
         font-size: 5vh;
         display: flex;
         align-items: center;
+        margin-right: 5px;
+        justify-content: start;
+    }
+
+    #bIsrc {
+        width: 80%;
+        visibility: hidden;
+    }
+
+    #bIsrc:focus {
+        border-bottom: var(--c4) 2px solid;
+    }
+
+    #bSesc {
+        width: 100%;
+        visibility: hidden;
+    }
+
+    #results {
+        margin-top: 1vh;
+        grid-row: 2;
+        overflow-x: hidden;
     }
 
     #main {
@@ -431,7 +480,7 @@ body {
 /**##############################################################*/
 
 /** ########PC######## */
-@media screen and (min-width: 648px) {
+@media screen and (min-width: 769px) {
     #app {
         grid-template-rows: 6% 94%;
     }
@@ -455,6 +504,9 @@ body {
         padding: 0.5vh 10px 0.5vh 10px;
         min-height: 60%;
         width: max-content;
+        grid-template-columns: auto auto 1fr;
+        grid-template-rows: min-content 1fr;
+        margin: 0.3vh 0px 0px 2vh;
     }
 
     #bIsrc {
