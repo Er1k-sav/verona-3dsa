@@ -1,4 +1,5 @@
 console.log("main.js")
+
 import * as THREE from 'three'
 import WebGL from 'three/addons/capabilities/WebGL.js'
 import { MapControls } from 'three/addons/controls/MapControls.js';

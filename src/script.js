@@ -1,6 +1,5 @@
 console.log("script.js")
 
-import { randInt } from "three/src/math/MathUtils.js";
 import { names, bInfos } from "../src/assets/data.js"
 
 const menuButton = document.getElementById("mSvg")
