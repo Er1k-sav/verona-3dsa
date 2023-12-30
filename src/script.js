@@ -12,7 +12,7 @@ var bPhone = false
 var bInfo = false
 var bSrc = false
 infoOff()
-if (window.innerWidth < 647) {
+if (window.innerWidth < 769) {
     bPhone = true
 }
 
@@ -106,15 +106,28 @@ document.getElementById("results").addEventListener("click", function(event) {
         srcOnOff()
     }
 })
-
-bInput.addEventListener("click", srcOnOff)
-document.getElementById("bSearch").addEventListener("mouseleave", () => {
-    if (bSrc) {
+if (!bPhone) {
+    bInput.addEventListener("click", srcOnOff)
+    document.getElementById("bSearch").addEventListener("mouseleave", () => {
+        if (bSrc) {
+            srcOnOff()
+        }
+    })
+} else {
+    document.getElementById("bSsvg").addEventListener("click", () => {
         srcOnOff()
-    }
-})
-bInput.addEventListener("input", src)
+        src()
+    })
+}
 
+
+bInput.addEventListener("input", src)
+document.getElementById("bSesc").addEventListener("click", () => {
+    bInput.value = ""
+    srcOnOff()
+})
+
+//srcOnOff()
 function srcOnOff() {
     if (!bSrc || bInput != "") {
         bSrc = !bSrc
@@ -128,12 +141,30 @@ function srcOnOff() {
             document.getElementById("bSearch").style.width = "150%"
             bInput.style.borderBottom = "var(--c4) 2px solid"
             document.getElementById("results").style.marginTop = "1vh"
-        } else if(bInput.value == "") {
+            document.getElementById("bSesc").style.visibility = "visible"
+        } else if (bInput.value == "") {
             document.getElementById("bSearch").style.height = "unset"
             document.getElementById("bSearch").style.width = "max-content"
             bInput.style.borderBottom = ""
             document.getElementById("results").innerHTML = ""
             document.getElementById("results").style.marginTop = ""
+            document.getElementById("bSesc").style.visibility = "hidden"
+        }
+    } else {
+        if (bSrc) {
+            document.getElementById("bBody").style.gridTemplateColumns = "auto 100%"
+            document.getElementById("bSearch").style.width = "90%"
+            document.getElementById("bSearch").style.height = "500%"
+            document.getElementById("bSearch").style.gridTemplateColumns = "4.2vh 1fr 4.2vh"
+            bInput.style.visibility = "visible"
+            document.getElementById("bSesc").style.visibility = "visible"
+        } else if (bInput.value == "") {
+            document.getElementById("bBody").style.gridTemplateColumns = "1fr 7vh"
+            document.getElementById("bSearch").style.width = "60%"
+            document.getElementById("bSearch").style.height = "60%"
+            document.getElementById("bSearch").style.gridTemplateColumns = "auto 0% 0%"
+            bInput.style.visibility = "hidden"
+            document.getElementById("bSesc").style.visibility = "hidden"
         }
     }
 }
