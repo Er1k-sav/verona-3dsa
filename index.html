@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&family=Poppins&display=swap" rel="stylesheet">
+    <script src="src/script.js"></script>
     <script type="importmap">
         {
           "imports": {
@@ -15,7 +16,88 @@
             "three/addons/": "https://unpkg.com/three@0.158.0/examples/jsm/"
           }
         }
-      </script>
+    </script>
+    <!--.###############################################
+        .          HTML ELEMENTS DATI EDIFICI
+        .###############################################
+    -->
+    <div id="iDatas" style="height: 0;">
+        <div id="0" class="bTxt"> <!--FERMO-->
+            FERMO
+        </div>
+        
+        <div id="1" class="bTxt"> <!--EUFEMIA-->
+            EUFEMIA
+        </div>
+        
+        <div id="2" class="bTxt"> <!--ANASTASIA-->
+            ANASTASIA
+        </div>
+        
+        <div id="3" class="bTxt"> <!--LAMBERTI-->
+            LAMBERTI
+        </div>
+        
+        <div id="4" class="bTxt"> <!--GARDELLO-->
+            GARDELLO
+        </div>
+        
+        <div id="5" class="bTxt"> <!--CATENA-->
+            CATENA
+        </div>
+        
+        <div id="6" class="bTxt"> <!--ALBERTO-->
+            ALBERTO
+        </div>
+        
+        <div id="7" class="bTxt"> <!--SGARZARIE-->
+            SGARZARIE
+        </div>
+        
+        <div id="8" class="bTxt"> <!--PIETRA-->
+            PIETRA
+        </div>
+        
+        <div id="9" class="bTxt"> <!--NAVI-->
+            NAVI
+        </div>
+        
+        <div id="10" class="bTxt"> <!--NUOVO-->
+            NUOVO
+        </div>
+        
+        <div id="11" class="bTxt"> <!--DOMUS-->
+            DOMUS
+        </div>
+        
+        <div id="12" class="bTxt"> <!--MADONNA-->
+            MADONNA
+        </div>
+        
+        <div id="13" class="bTxt"> <!--MAZZANTI-->
+            MAZZANTI
+        </div>
+        
+        <div id="14" class="bTxt"> <!--ARCHE-->
+            ARCHE
+        </div>
+        
+        <div id="15" class="bTxt"> <!--CAPITANO-->
+            CAPITANO
+        </div>
+        
+        <div id="16" class="bTxt"> <!--ROMEO-->
+            ROMEO
+        </div>
+        
+        <div id="17" class="bTxt"> <!--CANGRANDE-->
+            CANGRANDE
+        </div>
+        
+        <div id="18" class="bTxt"> <!--CASTELVECCHIO-->
+            CASTELVECCHIO
+        </div>
+    </div>
 </head>
 <body>
     <div id="app">
@@ -25,11 +107,16 @@
                 <div id="bBody">
                     <div id="bTitle">VERONA</div>
                     <div id="bSearch">
-                        <svg fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg id="bSsvg" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M11 3a8 8 0 1 0 0 16 8 8 0 1 0 0-16z"></path>
                             <path d="m21 21-4.35-4.35"></path>
                         </svg>
+                        <input id="bIsrc" type="text">
+                        <div id="results">
+                            
+                        </div>
                     </div>
+                    
                 </div>
                 <div id="bIISLogo"><img src="./src/assets/IISlogo.png" alt="ISSlogo" width="90%" height="90%"></div>
             </div>
@@ -56,13 +143,20 @@
             </div>
             <div id="info">
                 <div id="infoBox">
-                    <div id="iTitle">Titolo</div>
-                    <div id="iBody"></div>
+                    <div id="iHeader">
+                        <div id="iTitle">Title</div>
+                        <div id="iEsc" class="iClose">
+                            <svg width="100%" height="100%" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 6 6 18"></path>
+                                <path d="m6 6 12 12"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="iBody">Body</div>
                 </div>
             </div>
-            <div id="shadow"></div>
+            <div id="shadow" class="iClose"></div>
         </div>
     </div>
 </body>
-<script src="src/script.js"></script>
 </html>
