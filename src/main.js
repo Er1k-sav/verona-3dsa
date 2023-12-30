@@ -34,7 +34,7 @@ function init() {
         document.addEventListener("mousemove", onDocumentMouseMove )
         document.addEventListener("click", () => {
             if (intersects.length > 0) {
-                objClick(intersects[0])
+                objClick(intersects[0].object.name)
             }
         })
 
@@ -50,36 +50,38 @@ function init() {
         map.name = "map"
         scene.add(map)
 
-        const light1 = new THREE.PointLight(0xffffff, 200, 500)
-        light1.position.set(3, 10, 10)
-        scene.add(light1)
+        const dirLight = new THREE.DirectionalLight( 0xffffff, 3 );
+        dirLight.color.setHSL( 0.1, 1, 0.95 );
+        dirLight.position.set( - 1, 1.75, 1 );
+        dirLight.position.multiplyScalar( 30 );
+        scene.add( dirLight );
 
-        const light2 = new THREE.HemisphereLight(0x1a1a1a)
-        light2.position.set(-3, 0, -10)
-        scene.add(light2)
+        const hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 2 );
+		hemiLight.color.setHSL( 0.6, 1, 0.6 );
+		hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
+		hemiLight.position.set( 0, 50, 0 );
+		scene.add( hemiLight );
 
         /*
-        //TODO: SAN FERMO
-        //TODO: SANT' EUFEMIA
-        //TODO: SANT' ANASTASIA
-        //TODO: TORRE DEI LAMBERTI
-        !TODO: TORRE DEL PALAZZO DELLA RAGIONE
-        //TODO: TORRE DEL GARDELLO
-        //TODO: TORRE DELLA CATENA
-        //TODO: TORRE DI ALBERTO I DELLA SCALA
-        //TODO: CORTE SGARZERIE
-        //TODO: PONTE PIETRA
-        //TODO: PONTE NAVI
-        //TODO: PONTE NUOVO
-        //TODO: DOMUS MERCATORUM
-        //TODO: MADONNA VERONA
-        //TODO: CASE MAZZANTI
-        //TODO: ARCHE SCALIGERE
-        //TODO: PALAZZO DEL CAPITANO
-        //TODO: CASA DI ROMEO
-        //TODO: PALAZZO CANGRANDE
-        //TODO: CASTELLO
-        //TODO: PONTE CATELVECCHIO
+        //TODO: SAN FERMO 45.43918322839255, 11.00004607670956
+        //TODO: SANT' EUFEMIA 45.443111683828526, 10.993443765291731
+        //TODO: SANT' ANASTASIA 45.44512693814932, 10.99962559013084
+        //TODO: TORRE DEI LAMBERTI 45.4429680283074, 10.99776121422446
+        //TODO: TORRE DEL GARDELLO 45.44356965384231, 10.996515263027883
+        //TODO: TORRE DELLA CATENA 45.445075437145626, 10.98208518708498
+        //TODO: TORRE DI ALBERTO I DELLA SCALA 45.44748483415449, 10.999571050005212
+        //TODO: CORTE SGARZARIE 45.443509073954345, 10.99582437090889
+        //TODO: PONTE PIETRA 45.447799553121236, 11.000030089016231
+        //TODO: PONTE NAVI 45.43923086307812, 11.001439916441365
+        //TODO: PONTE NUOVO 45.442650012466906, 11.001331776552052
+        //TODO: DOMUS MERCATORUM 45.442786249876434, 10.997124576357265
+        //TODO: MADONNA VERONA 45.44323038655243, 10.997086049046727
+        //TODO: CASE MAZZANTI 45.44353295604631, 10.997189340502977
+        //TODO: ARCHE SCALIGERE 45.44359241142518, 10.998833482636472
+        //TODO: PALAZZO DEL CAPITANO 45.44336437888571, 10.99851552515274
+        //TODO: CASA DI ROMEO 45.443555117685165, 10.999284797431109
+        //TODO: PALAZZO CANGRANDE 45.44367180528564, 10.9985294300728
+        //TODO: PONTE CATELVECCHIO 45.440411919025564, 10.987280900845837
         TODO: MURA
         TODO: FIUME
         */
@@ -141,7 +143,7 @@ function init() {
                     }
                     intObject = intersects[0].object
                     intObject.currentHex = intObject.material.color.getHex()
-                    intObject.material.color.setHex(0xff0000)
+                    intObject.material.color.setHex(0xbc3720)
                 }
             } else {
                 if (intObject != null) {

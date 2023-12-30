@@ -1,7 +1,8 @@
 /** VARIABLES */
 
 html {
-    --c1: #892919;
+    /*--c1: #bc3720;*/
+    --c1: #782020;
     --c2: #ffcf70;
     --c3: #fff0d1;
     --c4: #cabfa3;
@@ -13,15 +14,20 @@ html {
 }
 
 /**######################*/
-
 body {
-    overflow: hidden;
     margin: 0;
     background-color: #474747;
 }
 
+#iDatas {
+    position: absolute;
+    width: 0%;
+    height: 0%;
+    overflow: hidden;
+}
 
 #app {
+    overflow: hidden;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -110,15 +116,63 @@ body {
 
 #bSearch {
     position: relative;
-    align-self: center;
+    align-self: start;
     justify-content: start;
-    margin-left: 2vh;
-    background-color: #3535354f;
+    background-color: #736e5f;
     border-radius: 30px;
-    aspect-ratio: 1;
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    grid-template-rows: min-content 1fr;
+    margin: 0.5vh 0px 0px 2vh;
+    z-index: 2;
+}
+
+#bIsrc {
+    position: relative;
+    background-color: #00000000;
+    border: unset;
+    color: white;
+    font-family: var(--f2);
+    margin-top: 0.5vh;
+}
+
+#bIsrc:focus {
+    outline: none;
+}
+
+#bIsrc::placeholder {
+    color: #e8e8e8;
+    font-family: var(--f2);
+}
+
+#bSsvg {
+    max-width: 2vw;
+    min-width: 4vh;
+}
+
+#results {
+    grid-column: span 3;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    row-gap: 1vh;
+    color: white;
+    font-family: var(--f2);
+    width: 100%;
+    overflow-y: scroll;
+}
+
+#results::-webkit-scrollbar {
+    width: 10px;
+}
+
+#results::-webkit-scrollbar-thumb {
+    background-color: var(--c4);
+    border-radius: 10px;
+}
+
+.result {
+    width: fit-content;
+    border-bottom: 1px solid var(--c4);
 }
 
 #bIISLogo {
@@ -167,7 +221,7 @@ body {
 #info {
     position: absolute;
     height: 100%;
-    justify-self: end;
+    justify-self: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -176,56 +230,86 @@ body {
 
 #infoBox {
     position: relative;
-    width: 94%;
+    width: 100%;
     height: 94%;
-    background-color: var(--c4);
-    overflow-y: scroll;
-    overflow-x: hidden;
+    background-color: var(--c5);
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 10vh;
     z-index: 3;
     border-radius: 10px;
 }
 
-#infoBox::-webkit-scrollbar {
-    width: 10px;
-}
-
-#infoBox::-webkit-scrollbar-thumb {
-    background-color: var(--c5);
-    border-radius: 10px;
+#iHeader {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
 }
 
 #iTitle {
     position: relative;
-    width: 100%;
-    height: 100%;
-    color: var(--c1);
+    width: fit-content;
+    height: fit-content;
+    background-color: #cabfa35f;
     font-family: var(--f1);
-    margin-left: 10px;
+    color: #fff;
+    border-radius: 10px;
+    display: flex;
+    justify-self: center;
+}
+
+#iEsc {
+    position: relative;
+    width: 100%;
+    color: #fff;
 }
 
 #iBody {
     position: relative;
-    width: 100%;
-    min-height: 100%;
-    height: fit-content;
+    width: calc(100% - 2vw);
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin: 0% 0% 0% 2vw;
+}
+
+#iBody::-webkit-scrollbar {
+    width: 10px;
+}
+
+#iBody::-webkit-scrollbar-thumb {
+    background-color: var(--c4);
+    border-radius: 10px;
 }
 
 #shadow {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: #0000007f;
-    /*z-index: 2;*/
+    backdrop-filter: blur(5px);
+    background-color: #00000001;
     z-index: -1;
+}
+
+.bTxt {
+    font-family: var(--f2);
+    color: white;
+}
+
+.subTxt {
+    position: relative;
+    background-color: #cabfa35f;
+    border-radius: 10px;
+    width: fit-content;
+    height: fit-content;
+    margin: .5vh 0% 1vh 0%;
 }
 
 /**##############################################################*/
 
 /** ########PHONE######## */
 @media screen and (max-width: 647px) {
+    
     #app {
         grid-template-rows: 7vh 93%;
     }
@@ -313,8 +397,35 @@ body {
         justify-self: center;
     }
 
+    #infoBox {
+        grid-template-rows: min-content 1fr;
+    }
+
+    #iHeader {
+        grid-template-columns: 100%;
+        grid-template-rows: 5vh 1fr;
+    }
+
     #iTitle {
+        margin: 0% 7% 0% 7%;
+        grid-row: 2;
         font-size: 5vh;
+        text-align: center;
+    }
+    
+    #iEsc {
+        position: relative;
+        width: 96%;
+        background-color: #cabfa35f;
+        margin: 2%;
+        border-radius: 20px;
+    }
+
+    #iBody {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin-top: 5%;
     }
 }
 /**##############################################################*/
@@ -341,8 +452,18 @@ body {
     }
 
     #bSearch {
-        padding: 0.3vw 70% 0.3vw 0.3vw;
-        width: 12%;
+        padding: 0.5vh 10px 0.5vh 10px;
+        min-height: 60%;
+        width: max-content;
+    }
+
+    #bIsrc {
+        width: fit-content;
+        font-size: 1.1vw;
+    }
+
+    #results {
+        font-size: 1.3vw;
     }
     
     #main {
@@ -382,9 +503,39 @@ body {
     #info {
         width: 50%;
     }
+
+    #infoBox {
+        grid-template-rows: 12vh 1fr;
+    }
+
+    #iHeader {
+        grid-template-rows: 100%;
+        grid-template-columns: 1fr 4.2vh;
+    }
     
     #iTitle {
-        font-size: 4.5vw;
+        font-size: 3.8vw;
+        padding: 0% 2% 0% 2%;
+        margin-left: 10px;
+        white-space: nowrap;
+        margin-top: 10px;
+    }
+
+    #iEsc {
+        aspect-ratio: 1;
+        justify-self: end;
+        border-radius: 100%;
+        display: flex;
+        justify-content: end;
+        margin-top: unset;
+    }
+
+    .bTxt {
+        font-size: 1vw;
+    }
+
+    .subTxt {
+        font-size: 1.5vw
     }
 }
 
