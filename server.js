@@ -32,18 +32,18 @@ app.get("/src/assets/data.js", (req, res) => {
     res.type("application/javascript");
 });
 
-app.get("/src/assets/map.png", (req, res) => {
-    res.sendFile(__dirname + "/src/assets/map.png");
+app.get("/src/assets/images/map.png", (req, res) => {
+    res.sendFile(__dirname + "/src/assets/images/map.png");
     res.type("image/png");
 });
 
-app.get("/src/assets/logo.png", (req, res) => {
-    res.sendFile(__dirname + "/src/assets/logo.png");
+app.get("/src/assets/images/logo.png", (req, res) => {
+    res.sendFile(__dirname + "/src/assets/images/logo.png");
     res.type("image/png");
 });
 
-app.get("/src/assets/IISlogo.png", (req, res) => {
-    res.sendFile(__dirname + "/src/assets/IISlogo.png");
+app.get("/src/assets/images/IISlogo.png", (req, res) => {
+    res.sendFile(__dirname + "/src/assets/images/IISlogo.png");
     res.type("image/png");
 });
 
