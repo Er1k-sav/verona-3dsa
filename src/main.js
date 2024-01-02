@@ -1,11 +1,11 @@
 console.log("main.js")
 
-import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js';
-import { WebGL } from 'https://threejsfundamentals.org/threejs/resources/threejs/r128/jsm/capabilities/WebGL.js';
-import { MapControls } from 'https://threejsfundamentals.org/threejs/resources/threejs/r128/jsm/controls/MapControls.js';
-import { GLTFLoader } from 'https://threejsfundamentals.org/threejs/resources/threejs/r128/jsm/loaders/GLTFLoader.js';
-import { objClick } from "../src/script.js";
-import { box, pos } from "../src/assets/data.js";
+import * as THREE from 'three'
+import WebGL from 'three/addons/capabilities/WebGL.js'
+import { MapControls } from 'three/addons/controls/MapControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { objClick } from "../src/script.js"
+import { box, pos } from "../src/assets/data.js"
 
 let resizing = false
 let lastKnownSize = { width: 0, height: 0 }
