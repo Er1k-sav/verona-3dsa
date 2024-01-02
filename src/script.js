@@ -93,19 +93,25 @@ function infoOff() {
 }
 
 export function objClick(idx) {
+    console.log(idx)
     document.getElementById("info").style.visibility = "visible";
     document.getElementById("iTitle").innerHTML = names[idx].toUpperCase()
     document.getElementById("iBody").innerHTML = bInfos[idx].outerHTML
     document.getElementById("shadow").style.zIndex = 2
-    if (bMenu) {menu()}
+    if (bMenu) {
+        menu()
+    }
 }
+
 document.getElementById("results").addEventListener("click", function(event) {
-    console.log("oo")
     if (event.target.classList.contains("result")) {
+        console.log(parseInt(event.target.id.toString().slice(1)))
         objClick(parseInt(event.target.id.toString().slice(1)))
+        bInput.value = ""
         srcOnOff()
     }
 })
+
 if (!bPhone) {
     bInput.addEventListener("click", srcOnOff)
     document.getElementById("bSearch").addEventListener("mouseleave", () => {
@@ -129,13 +135,14 @@ document.getElementById("bSesc").addEventListener("click", () => {
 
 //srcOnOff()
 function srcOnOff() {
+    console.log("on")
     if (!bSrc || bInput != "") {
         bSrc = !bSrc
     }
     if (!bPhone) {
         if (bSrc) {
             infoOff()
-            bInfo = !bInfo
+            bInfo = false
             src()
             document.getElementById("bSearch").style.height = "500%"
             document.getElementById("bSearch").style.width = "150%"
@@ -152,6 +159,8 @@ function srcOnOff() {
         }
     } else {
         if (bSrc) {
+            infoOff()
+            bInfo = false
             document.getElementById("bBody").style.gridTemplateColumns = "auto 100%"
             document.getElementById("bSearch").style.width = "90%"
             document.getElementById("bSearch").style.height = "500%"

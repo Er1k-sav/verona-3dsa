@@ -20,7 +20,7 @@ export let box =   [[0.3, 0.22, 0.5], //FERMO
                     ////[0.3, 0.8, 0.3], //CASTELLO
                     [0.2, 0.3, 0.6]] //CASTELVECCHIO
 
-export let pos =   [[3.3, 0.11, 2.94, -0.87], //FERMO
+export let pos =   [[3.3, 0, 2.94, -2.44, 0.3], //FERMO
                     [0.82, 0.13, 0.34, -0.94], //EUFEMIA
                     [3.2, 0.15, -0.72, -1], //ANASTASIA
                     [2.5, 0.75, 0.7, 0.6], //LAMBERTI
