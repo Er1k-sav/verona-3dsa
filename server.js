@@ -47,6 +47,11 @@ app.get("/src/assets/images/IISlogo.png", (req, res) => {
     res.type("image/png");
 });
 
+app.get("/src/assets/models/0.glb", (req, res) => {
+    res.sendFile(__dirname + "/src/assets/models/0.glb");
+    res.type("model/gltf-binary")
+})
+
 app.listen(8080);
 
 console.log("App listening on https://localhost:8080/");                                                                                                                                   

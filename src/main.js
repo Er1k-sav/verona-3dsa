@@ -1,9 +1,9 @@
 console.log("main.js")
 
-import * as THREE from 'three'
-import WebGL from 'three/addons/capabilities/WebGL.js'
-import { MapControls } from 'three/addons/controls/MapControls.js';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import * as THREE from '../node_modules/three/build/three.module.js'
+import WebGL from '../node_modules/three/examples/jsm/capabilities/WebGL.js'
+import { MapControls } from '../node_modules/three/examples/jsm/controls/MapControls.js';
+import { GLTFLoader } from '../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 import { objClick } from "../src/script.js"
 import { box, pos } from "../src/assets/data.js"
 
