@@ -47,10 +47,12 @@ app.get("/src/assets/images/IISlogo.png", (req, res) => {
     res.type("image/png");
 });
 
-app.get("/src/assets/models/0.glb", (req, res) => {
-    res.sendFile(__dirname + "/src/assets/models/0.glb");
-    res.type("model/gltf-binary")
-})
+for (let i = 0; i < 19; i++) {
+    app.get(`/src/assets/models/${i}.glb`, (req, res) => {
+        res.sendFile(__dirname + `/src/assets/models/${i}.glb`);
+        res.type("model/gltf-binary")
+    })
+}
 
 app.listen(8080);
 
