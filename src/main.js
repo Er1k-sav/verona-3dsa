@@ -17,9 +17,9 @@ function init() {
         camera.position.set(0, 0, 9)
         camera.rotation.set(-0.33, 0, 0)
         const renderer = new THREE.WebGLRenderer({ antialias: true })
-        renderer.setClearColor("#474747")
+        renderer.setClearColor("#535251")
         renderer.shadowMap.enabled = true;
-    	renderer.shadowMap.type = THREE.BasicShadowMap;
+        renderer.shadowMap.type = THREE.BasicShadowMap;
 
         const controls = new MapControls( camera, renderer.domElement )
         controls.enableDamping = true
@@ -47,7 +47,7 @@ function init() {
         let rect = canvasContainer.getBoundingClientRect()
 
         const mapG = new THREE.BoxGeometry(10, 0.01, 10)
-        const mapM1 = new THREE.MeshBasicMaterial({ color: 0x474747 })
+        const mapM1 = new THREE.MeshBasicMaterial({ color: 0x535251 })
         const mapSvg = new THREE.TextureLoader().load("../src/assets/images/map.png")
         const mapM2 = new THREE.MeshStandardMaterial({ map: mapSvg, transparent: true})
         const map = new THREE.Mesh(mapG, [mapM1, mapM1, mapM2, mapM1, mapM1, mapM1])
@@ -58,20 +58,18 @@ function init() {
 
         const dirLight = new THREE.DirectionalLight( 0xffffff, 3 );
         dirLight.color.setHSL( 0.1, 1, 0.95 );
-        dirLight.position.set( - 1, 1.75, 1 );
+        dirLight.position.set( - 1, 1.75, -1 );
         dirLight.position.multiplyScalar( 30 );
         dirLight.castShadow = true
-        dirLight.shadow.mapSize.width = 4096;
-        dirLight.shadow.mapSize.height = 4096;
+        dirLight.shadow.mapSize.width = 8192;
+        dirLight.shadow.mapSize.height = 8192;
         dirLight.shadow.camera.bias = -0.0001;
         dirLight.shadow.bias = -0.0001;
         scene.add( dirLight );
 
-        const hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 2 );
-		hemiLight.color.setHSL( 0.6, 1, 0.6 );
-		hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
-		hemiLight.position.set( 0, 50, 0 );
-		scene.add( hemiLight );
+        const hemiLight = new THREE.HemisphereLight( 0xe1e1e1, 0xc5c5c5, 2 );
+        hemiLight.position.set( 0, 50, 0 );
+        scene.add( hemiLight );
 
         /*
         //TODO: SAN FERMO 45.43918322839255, 11.00004607670956
@@ -140,6 +138,36 @@ function init() {
 
         //* ###############################################
 
+        let hands = []
+        let hnd = new THREE.Group()
+        let Hbox = [0.2, 0.15, 0.1]
+        let Hcol = [0xcabfa3, 0x908873, 0x353535]
+        let Hpos = [0.04, 0.04, 0.02]
+        hnd.rotation.y = 3.74
+        hnd.position.set(2.3691489319644323, 0.7915138787391861, 0.7892107868804573)
+
+        for (let i = 0; i < Hpos.length; i++) {
+            var pivot = new THREE.Group()
+            const geo = new THREE.BoxGeometry(0.01-i/1000, Hbox[i], 0.01)
+            const mat = new THREE.MeshStandardMaterial({color: Hcol[i]})
+            const hand = new THREE.Mesh(geo, mat)
+            hand.name = "map"
+            hand.position.set(i/1000, Hpos[i], 0)
+            hands.push(pivot)
+            pivot.add(hand)
+            hnd.add(pivot)
+        }
+        scene.add(hnd)
+
+        function clock() {
+            let time = new Date()
+            hands[0].rotation.x = -2 * Math.PI * time.getSeconds() / 60
+            hands[1].rotation.x = -2 * Math.PI * time.getMinutes() / 60
+            hands[2].rotation.x = -2 * Math.PI * time.getHours() / 12
+        }
+
+        setInterval(clock, 1000)
+
         function updateSize() {
             resizing = true
             raycaster = new THREE.Raycaster()
@@ -169,7 +197,7 @@ function init() {
             renderer.render(scene, camera)
             raycaster.setFromCamera( mouse, camera )
 
-			intersects = raycaster.intersectObjects( scene.children, true).filter(a => a.object.name != "map")
+            intersects = raycaster.intersectObjects( scene.children, true).filter(a => a.object.name != "map")
 
             if (intersects.length > 0) {
                 if (intObject != intersects[0].object) {
