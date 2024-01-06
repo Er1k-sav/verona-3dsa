@@ -76,7 +76,7 @@ function init() {
         //TODO: SANT' EUFEMIA 45.443111683828526, 10.993443765291731
         //TODO: SANT' ANASTASIA 45.44512693814932, 10.99962559013084
         //TODO: TORRE DEI LAMBERTI 45.4429680283074, 10.99776121422446
-        TODO: TORRE DEL GARDELLO 45.44356965384231, 10.996515263027883
+        //TODO: TORRE DEL GARDELLO 45.44356965384231, 10.996515263027883
         TODO: TORRE DELLA CATENA 45.445075437145626, 10.98208518708498
         TODO: TORRE DI ALBERTO I DELLA SCALA 45.44748483415449, 10.999571050005212
         TODO: CORTE SGARZARIE 45.443509073954345, 10.99582437090889
@@ -101,7 +101,7 @@ function init() {
 
         let structures = []
 
-        for (let i = 4; i < box.length; i++) {
+        for (let i = 5; i < box.length; i++) {
             const geo = new THREE.BoxGeometry(box[i][0], box[i][1], box[i][2])
             const mat = new THREE.MeshStandardMaterial({ color: 0xffffff })
             const mesh = new THREE.Mesh(geo, mat)
