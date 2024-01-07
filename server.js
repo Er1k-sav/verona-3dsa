@@ -59,7 +59,7 @@ let nFiles = [0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 for (let i = 0; i < 19; i++) {
     for (let j = 0; j < nFiles[i]; j++) {
-        app.get(`/src/assets/images/infos/${i}/${j}`, (req, res) => {
+        app.get(`/src/assets/images/infos/${i}/${j}.png`, (req, res) => {
             res.sendFile(__dirname + `/src/assets/images/infos/${i}/${j}.png`);
             res.type("image/png");
         });
