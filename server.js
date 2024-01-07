@@ -55,20 +55,17 @@ for (let i = 0; i < 19; i++) {
     })
 }
 
-for (let i = 0; i < 19; i++) {
-    fs.readdir(`./src/assets/images/infos/${i}`, (err, files) => {
+let nFiles = [0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-        const nFiles = files.filter(file => fs.statSync(path.join(`./src/assets/images/infos/${i}`, file)).isFile()).length;
-      
-        for (let j = 0; j < nFiles; j++) {
-            app.get(`/src/assets/images/infos/${i}/${j}`, (req, res) => {
-                res.sendFile(__dirname + `/src/assets/images/infos/${i}/${j}.png`);
-                res.type("image/png");
-            });
-        }
-    });
+for (let i = 0; i < 19; i++) {
+    for (let j = 0; j < nFiles[i]; j++) {
+        app.get(`/src/assets/images/infos/${i}/${j}`, (req, res) => {
+            res.sendFile(__dirname + `/src/assets/images/infos/${i}/${j}.png`);
+            res.type("image/png");
+        });
+    }
 }
 
 app.listen(8080);
 
-console.log("App listening on https://localhost:8080/");                                                                                                                                   
+console.log("App listening on https://localhost:8080/");
