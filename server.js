@@ -1,5 +1,6 @@
 import express from "express";
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -52,6 +53,20 @@ for (let i = 0; i < 19; i++) {
         res.sendFile(__dirname + `/src/assets/models/${i}.glb`);
         res.type("model/gltf-binary")
     })
+}
+
+for (let i = 0; i < 19; i++) {
+    fs.readdir(`./src/assets/images/infos/${i}`, (err, files) => {
+
+        const nFiles = files.filter(file => fs.statSync(path.join(`./src/assets/images/infos/${i}`, file)).isFile()).length;
+      
+        for (let j = 0; j < nFiles; j++) {
+            app.get(`/src/assets/images/infos/${i}/${j}`, (req, res) => {
+                res.sendFile(__dirname + `/src/assets/images/infos/${i}/${j}.png`);
+                res.type("image/png");
+            });
+        }
+    });
 }
 
 app.listen(8080);

@@ -220,13 +220,15 @@ body {
 }
 
 #mSub {
-    border: var(--c3) solid;
-    border-width: 2px 0px 2px 0px;
+    width: fit-content;
+    color: white;
+    font-family: var(--f1);
+    border-bottom: 2px var(--c4) solid;
 }
 
 #mBody {
-    border: var(--c3) solid;
-    border-width: 2px 0px 2px 0px;
+    color: white;
+    font-family: var(--f2);
 }
 
 #info {
@@ -277,11 +279,12 @@ body {
 
 #iBody {
     position: relative;
-    width: calc(100% - 2vw);
+    width: calc(100% - 4vw);
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
-    margin: 0% 0% 0% 2vw;
+    margin-left: 2vw;
+    padding-right: 2vw;
 }
 
 #iBody::-webkit-scrollbar {
@@ -303,6 +306,8 @@ body {
 }
 
 .bTxt {
+    display: grid;
+    row-gap: 2vh;
     font-family: var(--f2);
     color: white;
 }
@@ -314,6 +319,24 @@ body {
     width: fit-content;
     height: fit-content;
     margin: .5vh 0% 1vh 0%;
+}
+
+.path {
+    width: fit-content;
+    border-bottom: 2px solid var(--c4);
+    transition: all .2s;
+    margin-left: 5%;
+}
+
+.path:hover {
+    scale: 97%;
+    cursor: pointer;
+}
+
+.iImg {
+    max-width: calc(100% - 2vw);
+    height: auto;
+    display: block; /* Remove any extra spacing below the image */
 }
 
 /**##############################################################*/
@@ -412,8 +435,8 @@ body {
     }
 
     #menuBox {
-        grid-template-columns: 25% 75%;
-        grid-template-rows: 20% 80%;
+        grid-template-columns: 0% 100%;
+        grid-template-rows: min-content 1fr;
         overflow: scroll !important;
     }
 
@@ -424,12 +447,14 @@ body {
     }
 
     #mLogo {
-        margin: 0% 10% 0% 10%;
+        visibility: hidden;
     }
 
     #mSub {
-        margin: 0% 2% 0% 2%;
+        font-size: 6vh;
+        justify-self: center;
     }
+    #T {}
     
     #mBody {
         margin: 5% 2% 5% 2%;
@@ -475,6 +500,15 @@ body {
         width: 100%;
         height: 100%;
         margin-top: 5%;
+    }
+
+    .bTxt {
+        grid-template-columns: 100%;
+        font-size: 2vh;
+    }
+
+    .path {
+        font-size: 5vw;
     }
 }
 /**##############################################################*/
@@ -543,6 +577,10 @@ body {
     }
 
     #mSub {
+        display: flex;
+        align-items: center;
+        justify-self: center;
+        font-size: 2.5vw;
         margin: 0% 5% 0% 5%;
     }
     
@@ -561,7 +599,7 @@ body {
     }
 
     #infoBox {
-        grid-template-rows: 12vh 1fr;
+        grid-template-rows: 12vh 1fr 2vh;
     }
 
     #iHeader {
@@ -587,11 +625,20 @@ body {
     }
 
     .bTxt {
+        grid-template-columns: 50% 50%;
         font-size: 1vw;
+    }
+
+    .clm2 {
+        grid-column: span 2;
     }
 
     .subTxt {
         font-size: 1.5vw
+    }
+
+    .path {
+        font-size: 2vw;
     }
 }
 
