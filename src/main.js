@@ -61,8 +61,8 @@ function init() {
         dirLight.position.set( - 1, 1.75, -1 );
         dirLight.position.multiplyScalar( 30 );
         dirLight.castShadow = true
-        dirLight.shadow.mapSize.width = 8192;
-        dirLight.shadow.mapSize.height = 8192;
+        dirLight.shadow.mapSize.width = 2048;
+        dirLight.shadow.mapSize.height = 2048;
         dirLight.shadow.camera.bias = -0.0001;
         dirLight.shadow.bias = -0.0001;
         scene.add( dirLight );
