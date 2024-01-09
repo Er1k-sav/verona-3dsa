@@ -143,7 +143,7 @@ function init() {
         let Hbox = [0.15, 0.1]
         let Hpos = [0.04, 0.02]
         hnd.rotation.y = 3.74
-        hnd.position.set(2.3691489319644323, 0.6415138787391861, 0.7892107868804573)
+        hnd.position.set(2.3691489319644323, 0.7115138787391861, 0.7892107868804573)
 
         for (let i = 0; i < Hpos.length; i++) {
             var pivot = new THREE.Group()
