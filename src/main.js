@@ -61,8 +61,8 @@ function init() {
         dirLight.position.set( - 1, 1.75, -1 );
         dirLight.position.multiplyScalar( 30 );
         dirLight.castShadow = true
-        dirLight.shadow.mapSize.width = 8192;
-        dirLight.shadow.mapSize.height = 8192;
+        dirLight.shadow.mapSize.width = 1024;
+        dirLight.shadow.mapSize.height = 1024;
         dirLight.shadow.camera.bias = -0.0001;
         dirLight.shadow.bias = -0.0001;
         scene.add( dirLight );
@@ -76,9 +76,9 @@ function init() {
         //TODO: SANT' EUFEMIA 45.443111683828526, 10.993443765291731
         //TODO: SANT' ANASTASIA 45.44512693814932, 10.99962559013084
         //TODO: TORRE DEI LAMBERTI 45.4429680283074, 10.99776121422446
-        TODO: TORRE DEL GARDELLO 45.44356965384231, 10.996515263027883
-        TODO: TORRE DELLA CATENA 45.445075437145626, 10.98208518708498
-        TODO: TORRE DI ALBERTO I DELLA SCALA 45.44748483415449, 10.999571050005212
+        //TODO: TORRE DEL GARDELLO 45.44356965384231, 10.996515263027883
+        //TODO: TORRE DELLA CATENA 45.445075437145626, 10.98208518708498
+        //TODO: TORRE DI ALBERTO I DELLA SCALA 45.44748483415449, 10.999571050005212
         TODO: CORTE SGARZARIE 45.443509073954345, 10.99582437090889
         TODO: PONTE PIETRA 45.447799553121236, 11.000030089016231
         TODO: PONTE NAVI 45.43923086307812, 11.001439916441365
@@ -101,7 +101,7 @@ function init() {
 
         let structures = []
 
-        for (let i = 4; i < box.length; i++) {
+        for (let i = 7; i < box.length; i++) {
             const geo = new THREE.BoxGeometry(box[i][0], box[i][1], box[i][2])
             const mat = new THREE.MeshStandardMaterial({ color: 0xffffff })
             const mesh = new THREE.Mesh(geo, mat)
@@ -140,16 +140,15 @@ function init() {
 
         let hands = []
         let hnd = new THREE.Group()
-        let Hbox = [0.2, 0.15, 0.1]
-        let Hcol = [0xcabfa3, 0x908873, 0x353535]
-        let Hpos = [0.04, 0.04, 0.02]
+        let Hbox = [0.15, 0.1]
+        let Hpos = [0.04, 0.02]
         hnd.rotation.y = 3.74
-        hnd.position.set(2.3691489319644323, 0.7915138787391861, 0.7892107868804573)
+        hnd.position.set(2.3691489319644323, 0.7115138787391861, 0.7892107868804573)
 
         for (let i = 0; i < Hpos.length; i++) {
             var pivot = new THREE.Group()
             const geo = new THREE.BoxGeometry(0.01-i/1000, Hbox[i], 0.01)
-            const mat = new THREE.MeshStandardMaterial({color: Hcol[i]})
+            const mat = new THREE.MeshStandardMaterial({color: 0x353535})
             const hand = new THREE.Mesh(geo, mat)
             hand.name = "map"
             hand.position.set(i/1000, Hpos[i], 0)
@@ -161,12 +160,11 @@ function init() {
 
         function clock() {
             let time = new Date()
-            hands[0].rotation.x = -2 * Math.PI * time.getSeconds() / 60
-            hands[1].rotation.x = -2 * Math.PI * time.getMinutes() / 60
-            hands[2].rotation.x = -2 * Math.PI * time.getHours() / 12
+            hands[0].rotation.x = -2 * Math.PI * time.getMinutes() / 60 + (-2 * Math.PI * time.getSeconds() / 60 + -2 * Math.PI * time.getMilliseconds() / 60000) / 60
+            hands[1].rotation.x = -2 * Math.PI * time.getHours() / 12 + hands[1].rotation.x / 12
         }
 
-        setInterval(clock, 1000)
+        setInterval(clock, 1)
 
         function updateSize() {
             resizing = true
