@@ -334,6 +334,7 @@ body {
 }
 
 .iImg {
+    align-self: center;
     max-width: calc(100% - 2vw);
     height: auto;
     display: block; /* Remove any extra spacing below the image */
@@ -466,7 +467,7 @@ body {
     }
 
     #info {
-        width: 90%;
+        width: 95%;
         justify-self: center;
     }
 
@@ -485,6 +486,10 @@ body {
         font-size: 5vh;
         text-align: center;
     }
+
+    #iBody {
+        margin-top: 5%;
+    }
     
     #iEsc {
         position: relative;
@@ -492,13 +497,6 @@ body {
         background-color: #cabfa35f;
         margin: 2%;
         border-radius: 20px;
-    }
-
-    #iBody {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        margin-top: 5%;
     }
 
     .bTxt {
@@ -621,6 +619,10 @@ body {
         display: flex;
         justify-content: end;
         margin-top: unset;
+    }
+
+    .iImg {
+        justify-self: end;
     }
 
     .bTxt {

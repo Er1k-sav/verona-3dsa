@@ -9,6 +9,8 @@ import { box, pos } from "../src/assets/data.js"
 
 let resizing = false
 let lastKnownSize = { width: 0, height: 0 }
+let shadowDim = 512;
+let clock = new THREE.Clock(), sumFPS = [];
 
 function init() {
     if (WebGL.isWebGLAvailable()) {
@@ -18,8 +20,8 @@ function init() {
         camera.rotation.set(-0.33, 0, 0)
         const renderer = new THREE.WebGLRenderer({ antialias: true })
         renderer.setClearColor("#535251")
-        renderer.shadowMap.enabled = true;
-        renderer.shadowMap.type = THREE.BasicShadowMap;
+        renderer.shadowMap.enabled = true
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap
 
         const controls = new MapControls( camera, renderer.domElement )
         controls.enableDamping = true
@@ -61,8 +63,8 @@ function init() {
         dirLight.position.set( - 1, 1.75, -1 );
         dirLight.position.multiplyScalar( 30 );
         dirLight.castShadow = true
-        dirLight.shadow.mapSize.width = 1024;
-        dirLight.shadow.mapSize.height = 1024;
+        dirLight.shadow.mapSize.width = shadowDim;
+        dirLight.shadow.mapSize.height = shadowDim;
         dirLight.shadow.camera.bias = -0.0001;
         dirLight.shadow.bias = -0.0001;
         scene.add( dirLight );
@@ -72,13 +74,13 @@ function init() {
         scene.add( hemiLight );
 
         /*
-        //TODO: SAN FERMO 45.43918322839255, 11.00004607670956
-        //TODO: SANT' EUFEMIA 45.443111683828526, 10.993443765291731
-        //TODO: SANT' ANASTASIA 45.44512693814932, 10.99962559013084
-        //TODO: TORRE DEI LAMBERTI 45.4429680283074, 10.99776121422446
-        //TODO: TORRE DEL GARDELLO 45.44356965384231, 10.996515263027883
-        //TODO: TORRE DELLA CATENA 45.445075437145626, 10.98208518708498
-        //TODO: TORRE DI ALBERTO I DELLA SCALA 45.44748483415449, 10.999571050005212
+        // *TODO: SAN FERMO 45.43918322839255, 11.00004607670956
+        *TODO: SANT' EUFEMIA 45.443111683828526, 10.993443765291731
+        *TODO: SANT' ANASTASIA 45.44512693814932, 10.99962559013084
+        *TODO: TORRE DEI LAMBERTI 45.4429680283074, 10.99776121422446
+        *TODO: TORRE DEL GARDELLO 45.44356965384231, 10.996515263027883
+        *TODO: TORRE DELLA CATENA 45.445075437145626, 10.98208518708498
+        *TODO: TORRE DI ALBERTO I DELLA SCALA 45.44748483415449, 10.999571050005212
         TODO: CORTE SGARZARIE 45.443509073954345, 10.99582437090889
         TODO: PONTE PIETRA 45.447799553121236, 11.000030089016231
         TODO: PONTE NAVI 45.43923086307812, 11.001439916441365
@@ -158,13 +160,13 @@ function init() {
         }
         scene.add(hnd)
 
-        function clock() {
+        function rotateClock() {
             let time = new Date()
-            hands[0].rotation.x = -2 * Math.PI * time.getMinutes() / 60 + (-2 * Math.PI * time.getSeconds() / 60 + -2 * Math.PI * time.getMilliseconds() / 60000) / 60
-            hands[1].rotation.x = -2 * Math.PI * time.getHours() / 12 + hands[1].rotation.x / 12
+            hands[0].rotation.x = -2 * Math.PI * time.getMinutes()/ 60 + -2 * Math.PI * time.getSeconds() / 3600
+            hands[1].rotation.x = -2 * Math.PI * time.getHours() / 12 + hands[0].rotation.x / 12
         }
 
-        setInterval(clock, 1)
+        setInterval(rotateClock, 10)
 
         function updateSize() {
             resizing = true
@@ -220,10 +222,11 @@ function init() {
 
         function animate() {
             requestAnimationFrame(animate)
+            FpsSum()
             render()
         }
-        render()
         animate()
+        setInterval(quality, 3000)
 
         function onDocumentMouseMove(event) {
             event.preventDefault();
@@ -234,10 +237,34 @@ function init() {
             mouse.x = (canvasX / rect.width) * 2 - 1;
             mouse.y = - (canvasY / rect.height) * 2 + 1;
         }
+
+        function FpsSum() {
+            let fps = 1 / clock.getDelta()
+            sumFPS.push(fps)
+        }
+
+        function quality() {
+            let avgFPS = sumFPS.reduce((a, e) => a + e, 0) / sumFPS.length
+            if (avgFPS != Infinity) {
+                if (avgFPS < 30 && dirLight.shadow.mapSize.width > 512) {
+                    shadowResize(0.5)
+                } else if ((avgFPS > 60) && (dirLight.shadow.mapSize.width < 16384) && (avgFPS < 100)) {
+                    shadowResize(2)
+                }
+            }
+            sumFPS = []
+        }
+
+        function shadowResize(fct) {
+            dirLight.shadow.mapSize.width *= fct
+            dirLight.shadow.mapSize.height *= fct
+            dirLight.shadow.map.dispose();
+            dirLight.shadow.map = null;
+        }
         
     } else {
         const warning = WebGL.getWebGLErrorMessage()
-        document.getElementById('container').appendChild(warning)
+        document.getElementById("app").appendChild(warning)
     }
 }
 
