@@ -30,7 +30,7 @@ function init() {
         controls.minDistance = 5
         controls.maxDistance = 10
         controls.zoomToCursor = true
-        controls.maxPolarAngle = 2 * Math.PI / 5.7
+        controls.maxPolarAngle = 2 * Math.PI / 5.4
         controls.maxTargetRadius = 5
 
         let intObject
@@ -75,16 +75,16 @@ function init() {
 
         /*
         // *TODO: SAN FERMO 45.43918322839255, 11.00004607670956
-        *TODO: SANT' EUFEMIA 45.443111683828526, 10.993443765291731
+        // *TODO: SANT' EUFEMIA 45.443111683828526, 10.993443765291731
         *TODO: SANT' ANASTASIA 45.44512693814932, 10.99962559013084
         *TODO: TORRE DEI LAMBERTI 45.4429680283074, 10.99776121422446
         *TODO: TORRE DEL GARDELLO 45.44356965384231, 10.996515263027883
         *TODO: TORRE DELLA CATENA 45.445075437145626, 10.98208518708498
         *TODO: TORRE DI ALBERTO I DELLA SCALA 45.44748483415449, 10.999571050005212
-        TODO: CORTE SGARZARIE 45.443509073954345, 10.99582437090889
-        TODO: PONTE PIETRA 45.447799553121236, 11.000030089016231
-        TODO: PONTE NAVI 45.43923086307812, 11.001439916441365
-        TODO: PONTE NUOVO 45.442650012466906, 11.001331776552052
+        *TODO: CORTE SGARZARIE 45.443509073954345, 10.99582437090889
+        // *TODO: PONTE PIETRA 45.447799553121236, 11.000030089016231
+        *TODO: PONTE NAVI 45.43923086307812, 11.001439916441365
+        *TODO: PONTE NUOVO 45.442650012466906, 11.001331776552052
         TODO: DOMUS MERCATORUM 45.442786249876434, 10.997124576357265
         TODO: MADONNA VERONA 45.44323038655243, 10.997086049046727
         TODO: CASE MAZZANTI 45.44353295604631, 10.997189340502977
@@ -103,7 +103,7 @@ function init() {
 
         let structures = []
 
-        for (let i = 7; i < box.length; i++) {
+        for (let i = 11; i < box.length; i++) {
             const geo = new THREE.BoxGeometry(box[i][0], box[i][1], box[i][2])
             const mat = new THREE.MeshStandardMaterial({ color: 0xffffff })
             const mesh = new THREE.Mesh(geo, mat)

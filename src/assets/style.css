@@ -337,7 +337,7 @@ body {
     align-self: center;
     max-width: calc(100% - 2vw);
     height: auto;
-    display: block; /* Remove any extra spacing below the image */
+    display: block;
 }
 
 /**##############################################################*/
@@ -499,6 +499,10 @@ body {
         border-radius: 20px;
     }
 
+    .iImg {
+        justify-self: end;
+    }
+
     .bTxt {
         grid-template-columns: 100%;
         font-size: 2vh;
@@ -622,7 +626,7 @@ body {
     }
 
     .iImg {
-        justify-self: end;
+        justify-self: center;
     }
 
     .bTxt {
