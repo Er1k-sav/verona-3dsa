@@ -287,6 +287,23 @@ body {
     padding-right: 2vw;
 }
 
+#iGmapsInfo {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 50% 50%;
+}
+
+.iGmapsInfoBox {
+    display: grid;
+    grid-template-columns: 100%;
+    
+}
+
+.iGinfo {
+    width: 100%;
+    height: 100%;
+}
+
 #iBody::-webkit-scrollbar {
     width: 10px;
 }
@@ -499,6 +516,23 @@ body {
         border-radius: 20px;
     }
 
+    #iGmaps {
+        height: 100%;
+    }
+
+    #iGmapsInfo {
+        
+    }
+
+    .iGmapsInfoBox {
+        grid-template-rows: 40% 60%;
+    }
+
+    .subTxt {
+        align-self: center;
+        font-size: 3vh;
+    }
+
     .iImg {
         justify-self: end;
     }
@@ -623,6 +657,14 @@ body {
         display: flex;
         justify-content: end;
         margin-top: unset;
+    }
+
+    #iGmaps {
+        height: 50%;
+    }
+
+    .iGmapsInfoBox {
+        grid-template-rows: 30% 70%;
     }
 
     .iImg {
