@@ -12,7 +12,7 @@ var bPhone = false
 var bInfo = false
 var bSrc = false
 infoOff()
-//objClick(1)
+//objClick(3)
 if (window.innerWidth < 769) {
     bPhone = true
 }
@@ -97,11 +97,18 @@ export function objClick(idx) {
     console.log(idx)
     document.getElementById("info").style.visibility = "visible";
     document.getElementById("iTitle").innerHTML = names[idx].toUpperCase()
-    document.getElementById("iBody").innerHTML = bInfos[idx].outerHTML
+    document.getElementById("iBody").innerHTML = document.getElementById("iGmaps").outerHTML + bInfos[idx].outerHTML
     document.getElementById("shadow").style.zIndex = 2
+    iGmap(idx)
     if (bMenu) {
         menu()
     }
+}
+
+function iGmap(idx) {
+    document.getElementById("iAdr").innerHTML//* = <ADDRESS>
+    document.getElementById("iOpnH").innerHTML//* = <ORARI>
+    document.getElementById("iGmapsBox").innerHTML//* = <MAPPA>
 }
 
 document.getElementById("results").addEventListener("click", function(event) {

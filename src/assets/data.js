@@ -7,7 +7,7 @@ export let box =   [[0.3, 0.22, 0.5], //FERMO
                     [0.2, 0.3, 0.2], //CATENA
                     [0.2, 0.5, 0.15], //ALBERTO
                     [0.5, 0.2, 0.3], //SGARZARIE
-                    [/*0.2, 0.15, 0.5*/0,0,0], //PIETRA
+                    [0.2, 0.15, 0.5], //PIETRA
                     [0.2, 0.15, 0.5], //NAVI
                     [0.2, 0.15, 0.5], //NUOVO
                     [0.35, 0.2, 0.35], //DOMUS
@@ -28,10 +28,10 @@ export let pos =   [[3.3, 0, 2.94, -2.44, 0.3], //FERMO
                     [1.75, 0, 0.34, 0.6, .15], //GARDELLO
                     [-3.95, 0, -0.5, -1.27, .1], //CATENA
                     [2.98, 0, -1.73, -0.9, .13], //ALBERTO
-                    [1.36, 0.1, 0.5, 0.6], //SGARZARIE
+                    [1.36, 0, 0.5, 2.17, .22], //SGARZARIE
                     [3.32, 0, -2, -4.04, .02], //PIETRA
-                    [3.9, 0.075, 2.88, -1.6], //NAVI
-                    [3.9, 0.075, 0.9, -1.5], //NUOVO
+                    [3.9, 0, 2.88, -1.6, .02], //NAVI
+                    [3.9, 0, 0.9, -1.5, .02], //NUOVO
                     [1.86, 0.1, 0.7, 0.6], //DOMUS
                     [2.2, 0.08, 0.9, 0.6], //MADONNA
                     [2.3, 0.1, 0.36, 0.6], //MAZZANTI
@@ -42,7 +42,7 @@ export let pos =   [[3.3, 0, 2.94, -2.44, 0.3], //FERMO
                     ////[-1.3, 0.4, 2.38, 0.6], //CASTELLO
                     [-1.8, 0.15, 2.15, 0.15]] //CASTELVECCHIO
 
-export let names = ["San Fermo", "Sant' Eufemia", "Sant' Anastasia", "Torre dei Lamberti", "Torre del Gardello", "Torre della Catena", "Torre di Alberto I", "Corte Sgarzarie", "Ponte Pietra", "Ponte Navi", "Ponte Nuovo", "Domus Mercatorum", "Madonna Verona", "Case Mazzanti", "Arche Scaligere", "Palazzo del Capitano", "Casa di Romeo", "Palazzo Cangrande", "Castelvecchio"]
+export let names = ["San Fermo", "Sant' Eufemia", "Santa Anastasia", "Torre dei Lamberti", "Torre del Gardello", "Torre della Catena", "Torre di Alberto I", "Corte Sgarzarie", "Ponte Pietra", "Ponte Navi", "Ponte Nuovo", "Domus Mercatorum", "Madonna Verona", "Case Mazzanti", "Arche Scaligere", "Palazzo del Capitano", "Casa di Romeo", "Palazzo Cangrande", "Castelvecchio"]
 
 let Elm = []
 
