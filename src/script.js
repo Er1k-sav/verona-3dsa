@@ -1,6 +1,6 @@
 console.log("script.js")
 
-import { names, bInfos } from "../src/assets/data.js"
+import { names, bInfos, mapIDs, iAdr, iOpnH } from "../src/assets/data.js"
 
 const menuButton = document.getElementById("mSvg")
 const svgArrow1 = document.getElementById('svgArrow1');
@@ -12,7 +12,7 @@ var bPhone = false
 var bInfo = false
 var bSrc = false
 infoOff()
-//objClick(3)
+objClick(3)
 if (window.innerWidth < 769) {
     bPhone = true
 }
@@ -97,18 +97,21 @@ export function objClick(idx) {
     console.log(idx)
     document.getElementById("info").style.visibility = "visible";
     document.getElementById("iTitle").innerHTML = names[idx].toUpperCase()
+    iGmap(idx)
     document.getElementById("iBody").innerHTML = document.getElementById("iGmaps").outerHTML + bInfos[idx].outerHTML
     document.getElementById("shadow").style.zIndex = 2
-    iGmap(idx)
+    
     if (bMenu) {
         menu()
     }
 }
 
+
+
 function iGmap(idx) {
-    document.getElementById("iAdr").innerHTML//* = <ADDRESS>
-    document.getElementById("iOpnH").innerHTML//* = <ORARI>
-    document.getElementById("iGmapsBox").innerHTML//* = <MAPPA>
+    document.getElementById("iAdr").innerHTML = iAdr[idx]
+    document.getElementById("iOpnH").innerHTML = iOpnH[idx]
+    document.getElementById("iGmapsBox").innerHTML = `<iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=100%25&amp;hl=en&amp;q=${mapIDs[idx].replaceAll(" ", "%20")}+(${mapIDs[idx].replaceAll(" ", "%20")})&amp;t=p&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.maps.ie/population/">`
 }
 
 document.getElementById("results").addEventListener("click", function(event) {
