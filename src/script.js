@@ -116,10 +116,12 @@ function iGmap(idx) {
 
 document.getElementById("results").addEventListener("click", function(event) {
     if (event.target.classList.contains("result")) {
-        console.log(parseInt(event.target.id.toString().slice(1)))
-        objClick(parseInt(event.target.id.toString().slice(1)))
-        bInput.value = ""
-        srcOnOff()
+        let temp = event.target.id
+        if (isNaN(temp)) {
+            objClick(parseInt(temp.toString().slice(1)))
+            bInput.value = ""
+            srcOnOff()
+        }
     }
 })
 
@@ -146,7 +148,6 @@ document.getElementById("bSesc").addEventListener("click", () => {
 
 //srcOnOff()
 function srcOnOff() {
-    console.log("on")
     if (!bSrc || bInput != "") {
         bSrc = !bSrc
     }
