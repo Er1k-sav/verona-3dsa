@@ -1,48 +1,24 @@
-export let box =   [[0.3, 0.22, 0.5], //FERMO
-                    [0.3, 0.26, 0.6], //EUFEMIA
-                    [0.3, 0.3, 0.6], //ANASTASIA
-                    [0.3, 1.5, 0.3], //LAMBERTI
-                    ////[0.4, 0.2, 0.4], //RAGIONE
-                    [0.2, 1, 0.2], //GARDELLO
-                    [0.2, 0.3, 0.2], //CATENA
-                    [0.2, 0.5, 0.15], //ALBERTO
-                    [0.5, 0.2, 0.3], //SGARZARIE
-                    [0.2, 0.15, 0.5], //PIETRA
-                    [0.2, 0.15, 0.5], //NAVI
-                    [0.2, 0.15, 0.5], //NUOVO
-                    [0.35, 0.2, 0.35], //DOMUS
-                    [0.15, 0.16, 0.15], //MADONNA
-                    [0.35, 0.2, 0.35], //MAZZANTI
-                    [0.15, 0.16, 0.15], //ARCHE
-                    [0.2, 0.2, 0.25], //CAPITANO
-                    [0.2, 0.3, 0.25], //ROMEO
-                    [0.2, 0.3, 0.25], //CANGRANDE
-                    ////[0.3, 0.8, 0.3], //CASTELLO
-                    [0.2, 0.3, 0.6]] //CASTELVECCHIO
+export let pos =   [[3.3, 2.94, -2.44, 0.3], //FERMO
+                    [0.82, 0.34, -2.51, 0.3], //EUFEMIA
+                    [3.1, -0.72, -2.54, 0.2], //ANASTASIA
+                    [2.5, 0.7, 3.74, 0.18], //LAMBERTI
+                    [1.75, 0.34, 0.6, .15], //GARDELLO
+                    [-3.95, -0.5, -1.27, .1], //CATENA
+                    [2.98, -1.73, -0.9, .13], //ALBERTO
+                    [1.36, 0.5, 2.17, .22], //SGARZARIE
+                    [3.32, -2, -4.04, .02], //PIETRA
+                    [3.9, 2.88, -1.6, .02], //NAVI
+                    [3.9, 0.9, -1.5, .02], //NUOVO
+                    [2.1, 0.94, 0.6, .03], //DOMUS
+                    [2.05, 0.56, 0.6, .1], //MADONNA
+                    [2.3, 0.36, 3.74, .2], //MAZZANTI
+                    [2.88, 0.38, 0.6, .07], //ARCHE
+                    [2.72, 0.5, 0.6, .09], //CAPITANIO
+                    [3.12, 0.31, 2.17, .06], //ROMEO
+                    [2.74, 0.24, 3.74, .06], //CANGRANDE
+                    [-1.8, 2.15, 0.15, .025]] //CASTELVECCHIO
 
-export let pos =   [[3.3, 0, 2.94, -2.44, 0.3], //FERMO
-                    [0.82, 0, 0.34, -2.51, 0.3], //EUFEMIA
-                    [3.1, 0, -0.72, -2.54, 0.2], //ANASTASIA
-                    [2.5, 0, 0.7, 3.74, 0.18], //LAMBERTI
-                    ////[2.62, 0.1, 0.14, 0.6], //RAGIONE
-                    [1.75, 0, 0.34, 0.6, .15], //GARDELLO
-                    [-3.95, 0, -0.5, -1.27, .1], //CATENA
-                    [2.98, 0, -1.73, -0.9, .13], //ALBERTO
-                    [1.36, 0, 0.5, 2.17, .22], //SGARZARIE
-                    [3.32, 0, -2, -4.04, .02], //PIETRA
-                    [3.9, 0, 2.88, -1.6, .02], //NAVI
-                    [3.9, 0, 0.9, -1.5, .02], //NUOVO
-                    [1.86, 0.1, 0.7, 0.6], //DOMUS
-                    [2.2, 0.08, 0.9, 0.6], //MADONNA
-                    [2.3, 0.1, 0.36, 0.6], //MAZZANTI
-                    [2.88, 0.08, 0.38, 0.6], //ARCHE
-                    [2.76, 0.1, 0.56, 0.6], //CAPITANO
-                    [3.2, 0.15, 0.4, 0.6], //ROMEO ([3.1, 0.1, 0.3, 0.6])
-                    [2.76, 0.15, 0.13, 0.6], //CANGRANDE
-                    ////[-1.3, 0.4, 2.38, 0.6], //CASTELLO
-                    [-1.8, 0.15, 2.15, 0.15]] //CASTELVECCHIO
-
-export let names = ["San Fermo", "Sant' Eufemia", "Santa Anastasia", "Torre dei Lamberti", "Torre del Gardello", "Torre della Catena", "Torre di Alberto I", "Corte Sgarzarie", "Ponte Pietra", "Ponte Navi", "Ponte Nuovo", "Domus Mercatorum", "Madonna Verona", "Case Mazzanti", "Arche Scaligere", "Palazzo del Capitano", "Casa di Romeo", "Palazzo Cangrande", "Castelvecchio"]
+export let names = ["San Fermo", "Sant' Eufemia", "Santa Anastasia", "Torre dei Lamberti", "Torre del Gardello", "Torre della Catena", "Torre di Alberto I", "Corte Sgarzarie", "Ponte Pietra", "Ponte Navi", "Ponte Nuovo", "Domus Mercatorum", "Madonna Verona", "Case Mazzanti", "Arche Scaligere", "Palazzo del Capitanio", "Casa di Romeo", "Palazzo Cangrande", "Castelvecchio"]
 
 export let mapIDs = ["Chiesa di San Fermo Maggiore", "Chiesa di Sant'Eufemia  Verona", "Basilica di Santa Anastasia Piazza S.Anastasia", "Torre dei Lamberti", "Torre del Gardello", "Torre della Catena", "Torre di Ponte Pietra", "Area archeologica di Corte Sgarzerie", "Ponte Pietra Bridge", "Ponte Navi Bridge", "Ponte Nuovo Ponte Nuovo Bridge", "Domus Mercatorum", "Fontana Madonna Verona ", "Case dei Mazzanti Historical", "Arche Scaligere", "Palazzo di Cansignorio", "Casa di Romeo Via Arche Scaligere 3A", "Palazzo del Podestà Verona", "Ponte di Castelvecchio"]
 

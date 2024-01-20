@@ -5,7 +5,7 @@ import WebGL from 'three/addons/capabilities/WebGL.js'
 import { MapControls } from 'three/addons/controls/MapControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { objClick } from "../src/script.js"
-import { box, pos } from "../src/assets/data.js"
+import { pos } from "../src/assets/data.js"
 
 let resizing = false
 let lastKnownSize = { width: 0, height: 0 }
@@ -76,23 +76,23 @@ function init() {
         /*
         // *TODO: SAN FERMO 45.43918322839255, 11.00004607670956 0 
         // *TODO: SANT' EUFEMIA 45.443111683828526, 10.993443765291731 1
-        ! *TODO: SANT' ANASTASIA 45.44512693814932, 10.99962559013084 2
+        *TODO: SANT' ANASTASIA 45.44512693814932, 10.99962559013084 2
         // *TODO: TORRE DEI LAMBERTI 45.4429680283074, 10.99776121422446 3
         // *TODO: TORRE DEL GARDELLO 45.44356965384231, 10.996515263027883 4 
         // *TODO: TORRE DELLA CATENA 45.445075437145626, 10.98208518708498 5
         // *TODO: TORRE DI ALBERTO I DELLA SCALA 45.44748483415449, 10.999571050005212 6
-        *TODO: CORTE SGARZARIE 45.443509073954345, 10.99582437090889 7
+        // *TODO: CORTE SGARZARIE 45.443509073954345, 10.99582437090889 7
         // *TODO: PONTE PIETRA 45.447799553121236, 11.000030089016231 8
-        *TODO: PONTE NAVI 45.43923086307812, 11.001439916441365 9 
-        *TODO: PONTE NUOVO 45.442650012466906, 11.001331776552052 10
-        TODO: DOMUS MERCATORUM 45.442786249876434, 10.997124576357265 11
-        ! TODO: MADONNA VERONA 45.44323038655243, 10.997086049046727 12
-        ! TODO: CASE MAZZANTI 45.44353295604631, 10.997189340502977 13
-        TODO: ARCHE SCALIGERE 45.44359241142518, 10.998833482636472 14
-        ! TODO: PALAZZO DEL CAPITANO 45.44336437888571, 10.99851552515274 15
-        ! TODO: CASA DI ROMEO 45.443555117685165, 10.999284797431109 16
-        TODO: PALAZZO CANGRANDE 45.44367180528564, 10.9985294300728 17
-        TODO: PONTE CATELVECCHIO 45.440411919025564, 10.987280900845837 18
+        // *TODO: PONTE NAVI 45.43923086307812, 11.001439916441365 9 
+        // *TODO: PONTE NUOVO 45.442650012466906, 11.001331776552052 10
+        // *TODO: DOMUS MERCATORUM 45.442786249876434, 10.997124576357265 11
+        // *TODO: MADONNA VERONA 45.44323038655243, 10.997086049046727 12
+        ! *TODO: CASE MAZZANTI 45.44353295604631, 10.997189340502977 13
+        // *TODO: ARCHE SCALIGERE 45.44359241142518, 10.998833482636472 14
+        // *TODO: PALAZZO DEL CAPITANIO 45.44336437888571, 10.99851552515274 15
+        // *TODO: CASA DI ROMEO 45.443555117685165, 10.999284797431109 16
+        // *TODO: PALAZZO CANGRANDE 45.44367180528564, 10.9985294300728 17
+        // *TODO: PONTE CATELVECCHIO 45.440411919025564, 10.987280900845837 18
         TODO: MURA
         TODO: FIUME
         */
@@ -101,28 +101,13 @@ function init() {
         //*            STRUTTURE NELLA MAPPA
         //* ###############################################
 
-        let structures = []
-
-        for (let i = 11; i < box.length; i++) {
-            const geo = new THREE.BoxGeometry(box[i][0], box[i][1], box[i][2])
-            const mat = new THREE.MeshStandardMaterial({ color: 0xffffff })
-            const mesh = new THREE.Mesh(geo, mat)
-            mesh.position.set(pos[i][0], pos[i][1], pos[i][2])
-            mesh.rotation.y = pos[i][3]
-            mesh.name = i
-            mesh.castShadow = true
-            mesh.receiveShadow = true
-            scene.add(mesh)
-            structures.push(mesh)
-        }
-
         const loader = new GLTFLoader();
-        for (let i = 0; i < 11/*pos.length*/; i++) {
+        for (let i = 0; i < pos.length; i++) {
             loader.load(`../src/assets/models/${i}.glb`, (gltf) => {
                 let obj = gltf.scene
-                obj.scale.set(pos[i][4], pos[i][4], pos[i][4])
-                obj.position.set(pos[i][0], pos[i][1], pos[i][2])
-                obj.rotation.y = pos[i][3]
+                obj.scale.set(pos[i][3], pos[i][3], pos[i][3])
+                obj.position.set(pos[i][0], 0, pos[i][1])
+                obj.rotation.y = pos[i][2]
                 obj.traverse((child) => {
                     if (child.isMesh) {
                         if (child.material) {
@@ -248,7 +233,7 @@ function init() {
             if (avgFPS != Infinity) {
                 if (avgFPS < 30 && dirLight.shadow.mapSize.width > 512) {
                     shadowResize(0.5)
-                } else if ((avgFPS > 60) && (dirLight.shadow.mapSize.width < 16384) && (avgFPS < 100)) {
+                } else if ((avgFPS > 60) && (dirLight.shadow.mapSize.width < 4096) && (avgFPS < 100)) {
                     shadowResize(2)
                 }
             }
