@@ -12,7 +12,6 @@ var bPhone = false
 var bInfo = false
 var bSrc = false
 infoOff()
-//objClick(3)
 if (window.innerWidth < 769) {
     bPhone = true
 }
