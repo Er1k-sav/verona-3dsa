@@ -94,12 +94,14 @@ function init() {
         // *TODO: PALAZZO CANGRANDE 45.44367180528564, 10.9985294300728 17
         // *TODO: PONTE CATELVECCHIO 45.440411919025564, 10.987280900845837 18
         TODO: MURA
-        TODO: FIUME
+        *TODO: FIUME
         */
 
         //* ###############################################
         //*            STRUTTURE NELLA MAPPA
         //* ###############################################
+
+        let Str = []
 
         const loader = new GLTFLoader();
         for (let i = 0; i < pos.length; i++) {
@@ -119,6 +121,7 @@ function init() {
                         child.receiveShadow = true;
                     }
                 });
+                Str.push(obj)
                 scene.add(obj)
             })
         }
@@ -205,13 +208,14 @@ function init() {
             }
         }
 
+        setInterval(quality, 3000)
         function animate() {
             requestAnimationFrame(animate)
             FpsSum()
+            Str[19].rotation.y += 0.005
             render()
         }
         animate()
-        setInterval(quality, 3000)
 
         function onDocumentMouseMove(event) {
             event.preventDefault();
@@ -233,7 +237,7 @@ function init() {
             if (avgFPS != Infinity) {
                 if (avgFPS < 30 && dirLight.shadow.mapSize.width > 512) {
                     shadowResize(0.5)
-                } else if ((avgFPS > 60) && (dirLight.shadow.mapSize.width < 4096) && (avgFPS < 100)) {
+                } else if ((avgFPS > 60) && (dirLight.shadow.mapSize.width < 8192) && (avgFPS < 100)) {
                     shadowResize(2)
                 }
             }

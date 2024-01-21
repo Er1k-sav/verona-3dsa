@@ -340,6 +340,7 @@ body {
     width: fit-content;
     height: fit-content;
     margin: .5vh 0% 1vh 0%;
+    padding: 0 1% 0 1%;
 }
 
 .path {
