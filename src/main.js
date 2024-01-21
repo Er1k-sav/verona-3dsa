@@ -212,7 +212,9 @@ function init() {
         function animate() {
             requestAnimationFrame(animate)
             FpsSum()
-            Str[19].rotation.y += 0.005
+            try {
+                Str[19].rotation.y += 0.005
+            } catch {}
             render()
         }
         animate()
