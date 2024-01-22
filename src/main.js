@@ -121,6 +121,7 @@ function init() {
                         child.receiveShadow = true;
                     }
                 });
+                obj.name = `${i}`
                 Str.push(obj)
                 scene.add(obj)
             })
@@ -213,7 +214,15 @@ function init() {
             requestAnimationFrame(animate)
             FpsSum()
             try {
-                Str[19].rotation.y += 0.005
+                let pings = []
+                for (let i=0; i<Str.length; i++) {
+                    if (Str[i].name == "19") {
+                        pings.push(Str[i])
+                    }
+                }
+                for (let i=0; i<pings.length; i++) {
+                    pings[i].rotation.y += 0.005
+                }
             } catch {}
             render()
         }
