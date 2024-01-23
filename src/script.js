@@ -18,7 +18,6 @@ pathInit()
 if (window.innerWidth < 769) {
     bPhone = true
 }
-menu()
 
 if (!bPhone) {
     svgArrow1.style.opacity = "0"
