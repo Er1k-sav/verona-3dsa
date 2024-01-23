@@ -1,58 +1,62 @@
 console.log("script.js")
 
-import { names, bInfos, mapIDs, iAdr, iOpnH } from "../src/assets/data.js"
+import { names, bInfos, mapIDs, iAdr, iOpnH, pStr, pName } from "../src/assets/data.js"
+import { pings, clearPings } from "../src/main.js"
 
 const menuButton = document.getElementById("mSvg")
-const svgArrow1 = document.getElementById('svgArrow1');
-const svgArrow2 = document.getElementById('svgArrow2');
-const svgLine = document.getElementById('svgLine');
+const svgArrow1 = document.getElementById('svgArrow1')
+const svgArrow2 = document.getElementById('svgArrow2')
+const svgLine = document.getElementById('svgLine')
 const bInput = document.getElementById("bIsrc")
 var bMenu = false
 var bPhone = false
 var bInfo = false
 var bSrc = false
+var curPath = -1
 infoOff()
+pathInit()
 if (window.innerWidth < 769) {
     bPhone = true
 }
+menu()
 
 if (!bPhone) {
-    svgArrow1.style.opacity = "0";
+    svgArrow1.style.opacity = "0"
     bInput.placeholder = "Dove vuoi andare?"
 }
 
 document.getElementById("bIISLogo").addEventListener("click", () => {
-    window.open("https://www.calabreselevi.edu.it/", '_blank');
+    window.open("https://www.calabreselevi.edu.it/", '_blank')
 })
 
 menuButton.addEventListener("mouseover", () => {
     if (!bPhone) {
         if (bMenu) {
-            svgArrow2.style.animation = "fadeIn 0.4s";
-            svgArrow2.style.opacity = 1;
-            svgArrow1.style.animation = "fadeOut 0.4s";
-            svgArrow1.style.opacity = 0;
+            svgArrow2.style.animation = "fadeIn 0.4s"
+            svgArrow2.style.opacity = 1
+            svgArrow1.style.animation = "fadeOut 0.4s"
+            svgArrow1.style.opacity = 0
         } else {
-            svgArrow1.style.animation = "fadeIn 0.4s";
-            svgArrow1.style.opacity = 1;
-            svgArrow2.style.animation = "fadeOut 0.4s";
-            svgArrow2.style.opacity = 0;
+            svgArrow1.style.animation = "fadeIn 0.4s"
+            svgArrow1.style.opacity = 1
+            svgArrow2.style.animation = "fadeOut 0.4s"
+            svgArrow2.style.opacity = 0
         }
-        svgLine.style.animation = "fadeOut 0.4s";
-        svgLine.style.opacity = 0;
+        svgLine.style.animation = "fadeOut 0.4s"
+        svgLine.style.opacity = 0
     }
-});
+})
 
 menuButton.addEventListener("mouseout", () => {
     if (!bPhone) {
-        svgLine.style.animation = "fadeIn 0.4s";
-        svgLine.style.opacity = 1;
-        svgArrow2.style.animation = "fadeOut 0.4s";
-        svgArrow2.style.opacity = 0;
-        svgArrow1.style.animation = "fadeOut 0.4s";
-        svgArrow1.style.opacity = 0;
+        svgLine.style.animation = "fadeIn 0.4s"
+        svgLine.style.opacity = 1
+        svgArrow2.style.animation = "fadeOut 0.4s"
+        svgArrow2.style.opacity = 0
+        svgArrow1.style.animation = "fadeOut 0.4s"
+        svgArrow1.style.opacity = 0
     }
-});
+})
 
 menuButton.addEventListener("click", menu)
 
@@ -60,21 +64,21 @@ function menu() {
     bMenu = !bMenu
     if (!bPhone) {
         if (bMenu) {
-            document.getElementById("main").style.gridTemplateColumns = "20% 2% 78%";
+            document.getElementById("main").style.gridTemplateColumns = "20% 2% 78%"
             document.getElementById("menuBox").style.transform = "translateX(0)"
         } else {
-            document.getElementById("main").style.gridTemplateColumns = "1% 2% 97%";
+            document.getElementById("main").style.gridTemplateColumns = "1% 2% 97%"
             document.getElementById("menuBox").style.transform = "translateX(-20vw)"
         }
     } else {
         if (bMenu) {
-            document.getElementById("main").style.gridTemplateRows = "35% 5% 60%";
-            svgArrow1.style.opacity = 1;
-            svgArrow2.style.opacity = 0;
+            document.getElementById("main").style.gridTemplateRows = "35% 5% 60%"
+            svgArrow1.style.opacity = 1
+            svgArrow2.style.opacity = 0
         } else {
-            document.getElementById("main").style.gridTemplateRows = "88% 5% 7%";
-            svgArrow2.style.opacity = 1;
-            svgArrow1.style.opacity = 0;
+            document.getElementById("main").style.gridTemplateRows = "88% 5% 7%"
+            svgArrow2.style.opacity = 1
+            svgArrow1.style.opacity = 0
         }
     }
 }
@@ -104,8 +108,6 @@ export function objClick(idx) {
         menu()
     }
 }
-
-
 
 function iGmap(idx) {
     document.getElementById("iAdr").innerHTML = iAdr[idx]
@@ -138,14 +140,12 @@ if (!bPhone) {
     })
 }
 
-
 bInput.addEventListener("input", src)
 document.getElementById("bSesc").addEventListener("click", () => {
     bInput.value = ""
     srcOnOff()
 })
 
-//srcOnOff()
 function srcOnOff() {
     if (!bSrc || bInput != "") {
         bSrc = !bSrc
@@ -203,17 +203,66 @@ function src() {
         results = names
     }
     if (results.length == 0) {
-        var elm = document.createElement("div");
-        elm.className = "result";
-        elm.textContent = "Nessun Risultato Trovato :(";
+        var elm = document.createElement("div")
+        elm.className = "result"
+        elm.textContent = "Nessun Risultato Trovato :("
         elm.style.marginTop = "3vh"
         document.getElementById("results").innerHTML += elm.outerHTML
     }
     for (let i = 0; i < results.length; i++) {
-        var elm = document.createElement("div");
-        elm.className = "result";
-        elm.textContent = results[i];
+        var elm = document.createElement("div")
+        elm.className = "result"
+        elm.textContent = results[i]
         elm.id = "r" + names.indexOf(results[i])
         document.getElementById("results").innerHTML += elm.outerHTML
+    }
+}
+
+function pathInit() {
+    const mBody = document.getElementById("mBody");
+    for (let i = 0; i < pName.length; i++) {
+        var Elm = document.createElement("div")
+        var Elm1 = document.createElement("div")
+        Elm.className = "path"
+        Elm.innerHTML = `${pName[i]}`
+        Elm.id = `p_${i}`
+        Elm1.id = `pI_${i}`
+        Elm1.style.marginLeft = "3vw"
+        Elm.addEventListener("click", () => {
+            pathClick(i)
+        })
+        mBody.appendChild(Elm)
+        mBody.appendChild(Elm1)
+    }
+}
+
+function pathClick(idx) {
+    if (curPath == idx) {
+        curPath = -1
+        clearPath()
+        clearPings()
+    } else {
+        if (curPath != -1) {
+            clearPath()
+            clearPings()
+        }
+        curPath = idx
+        pings(pStr[idx])
+        for (let i = 0; i < pStr[idx].length; i++) {
+            var Elm = document.createElement("div")
+            Elm.innerHTML = `${names[pStr[idx][i]]}`
+            Elm.className = "result"
+            Elm.addEventListener("click", () => {
+                objClick(pStr[idx][i])
+            })
+            
+            document.getElementById(`pI_${idx}`).appendChild(Elm)
+        }
+    }
+}
+
+function clearPath() {
+    for (let i = 0; i < pStr.length; i++) {
+        document.getElementById(`pI_${i}`).innerHTML = ""
     }
 }

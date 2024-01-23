@@ -544,7 +544,8 @@ body {
     }
 
     .path {
-        font-size: 5vw;
+        font-size: 6vw;
+        margin: 4% 0% 4% 4%;
     }
 }
 /**##############################################################*/
@@ -689,7 +690,8 @@ body {
     }
 
     .path {
-        font-size: 2vw;
+        font-size: 1.8vw;
+        margin: 4% 0% 4% 4%;
     }
 }
 

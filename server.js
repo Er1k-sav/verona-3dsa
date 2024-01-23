@@ -47,16 +47,16 @@ app.get("/src/assets/images/IISlogo.png", (req, res) => {
     res.type("image/png")
 });
 
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 21; i++) {
     app.get(`/src/assets/models/${i}.glb`, (req, res) => {
         res.sendFile(__dirname + `/src/assets/models/${i}.glb`);
         res.type("model/gltf-binary")
     })
 }
 
-let nFiles = [3, 7, 10, 3, 1, 2, 1, 2, 2, 1, 2, 2, 1, 0, 2, 1, 1, 2, 4, 3]
+let nFiles = [3, 7, 10, 3, 1, 2, 1, 2, 2, 1, 2, 2, 1, 0, 2, 1, 1, 2, 4, 3, 0]
 
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 21; i++) {
     for (let j = 0; j < nFiles[i]; j++) {
         app.get(`/src/assets/images/infos/${i}/${j}.png`, (req, res) => {
             res.sendFile(__dirname + `/src/assets/images/infos/${i}/${j}.png`)
