@@ -6,7 +6,6 @@ import { MapControls } from 'three/addons/controls/MapControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { objClick } from "../src/script.js"
 import { pos } from "../src/assets/data.js"
-import { randFloat, randInt } from 'three/src/math/MathUtils.js';
 
 let resizing = false
 let lastKnownSize = { width: 0, height: 0 }
@@ -282,7 +281,7 @@ export function pings(arr) {
             let obj = gltf.scene
             obj.scale.set(0.3, 0.3, 0.3)
             obj.position.set(pos[arr[i]][0], 1.8, pos[arr[i]][1])
-            obj.rotation.y = randFloat(0, 2*Math.PI)
+            obj.rotation.y = Math.random()*2*Math.PI
             obj.traverse((child) => {
                 if (child.isMesh) {
                     if (child.material) {
