@@ -6,7 +6,15 @@ const menuButton = document.getElementById("mSvg")
 const svgArrow1 = document.getElementById('svgArrow1');
 const svgArrow2 = document.getElementById('svgArrow2');
 const svgLine = document.getElementById('svgLine');
-const bInput = document.getElementById("bIsrc")
+const bInput = document.getElementById("bIsrc");
+const audio = document.getElementById("audio");
+
+audio.autoplay = true;
+audio.loop = true;
+audio.volume = 0.5;
+audio.load();
+audio.play();
+
 var bMenu = false
 var bPhone = false
 var bInfo = false
