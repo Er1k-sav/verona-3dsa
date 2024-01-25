@@ -9,12 +9,14 @@ import { pos } from "../src/assets/data.js"
 
 let resizing = false
 let lastKnownSize = { width: 0, height: 0 }
-let shadowDim = 512;
-let clock = new THREE.Clock(), sumFPS = [];
+let shadowDim = 512
+let clock = new THREE.Clock(), sumFPS = []
+
+const scene = new THREE.Scene()
+const loader = new GLTFLoader()
 
 function init() {
     if (WebGL.isWebGLAvailable()) {
-        const scene = new THREE.Scene()
         const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000)
         camera.position.set(0, 0, 9)
         camera.rotation.set(-0.33, 0, 0)
@@ -58,25 +60,25 @@ function init() {
         map.receiveShadow = true
         scene.add(map)
 
-        const dirLight = new THREE.DirectionalLight( 0xffffff, 3 );
-        dirLight.color.setHSL( 0.1, 1, 0.95 );
-        dirLight.position.set( - 1, 1.75, -1 );
-        dirLight.position.multiplyScalar( 30 );
+        const dirLight = new THREE.DirectionalLight( 0xffffff, 3 )
+        dirLight.color.setHSL( 0.1, 1, 0.95 )
+        dirLight.position.set( - 1, 1.75, -1 )
+        dirLight.position.multiplyScalar( 30 )
         dirLight.castShadow = true
-        dirLight.shadow.mapSize.width = shadowDim;
-        dirLight.shadow.mapSize.height = shadowDim;
-        dirLight.shadow.camera.bias = -0.0001;
-        dirLight.shadow.bias = -0.0001;
-        scene.add( dirLight );
+        dirLight.shadow.mapSize.width = shadowDim
+        dirLight.shadow.mapSize.height = shadowDim
+        dirLight.shadow.camera.bias = -0.0001
+        dirLight.shadow.bias = -0.0001
+        scene.add( dirLight )
 
-        const hemiLight = new THREE.HemisphereLight( 0xe1e1e1, 0xc5c5c5, 2 );
-        hemiLight.position.set( 0, 50, 0 );
-        scene.add( hemiLight );
+        const hemiLight = new THREE.HemisphereLight( 0xe1e1e1, 0xc5c5c5, 2 )
+        hemiLight.position.set( 0, 50, 0 )
+        scene.add( hemiLight )
 
         /*
         // *TODO: SAN FERMO 45.43918322839255, 11.00004607670956 0 
         // *TODO: SANT' EUFEMIA 45.443111683828526, 10.993443765291731 1
-        *TODO: SANT' ANASTASIA 45.44512693814932, 10.99962559013084 2
+        // *TODO: SANT' ANASTASIA 45.44512693814932, 10.99962559013084 2
         // *TODO: TORRE DEI LAMBERTI 45.4429680283074, 10.99776121422446 3
         // *TODO: TORRE DEL GARDELLO 45.44356965384231, 10.996515263027883 4 
         // *TODO: TORRE DELLA CATENA 45.445075437145626, 10.98208518708498 5
@@ -93,15 +95,16 @@ function init() {
         // *TODO: CASA DI ROMEO 45.443555117685165, 10.999284797431109 16
         // *TODO: PALAZZO CANGRANDE 45.44367180528564, 10.9985294300728 17
         // *TODO: PONTE CATELVECCHIO 45.440411919025564, 10.987280900845837 18
-        TODO: MURA
-        TODO: FIUME
+        // *TODO: MURA
+        // *TODO: FIUME
         */
 
         //* ###############################################
         //*            STRUTTURE NELLA MAPPA
         //* ###############################################
 
-        const loader = new GLTFLoader();
+        let Str = []
+
         for (let i = 0; i < pos.length; i++) {
             loader.load(`../src/assets/models/${i}.glb`, (gltf) => {
                 let obj = gltf.scene
@@ -111,14 +114,16 @@ function init() {
                 obj.traverse((child) => {
                     if (child.isMesh) {
                         if (child.material) {
-                            child.material = new THREE.MeshStandardMaterial({ color: child.material.color, map: child.material.map });
-                            child.material.side = THREE.DoubleSide;
+                            child.material = new THREE.MeshStandardMaterial({ color: child.material.color, map: child.material.map })
+                            child.material.side = THREE.DoubleSide
                         }
-                        child.geometry.computeVertexNormals();
-                        child.castShadow = true;
-                        child.receiveShadow = true;
+                        child.geometry.computeVertexNormals()
+                        child.castShadow = true
+                        child.receiveShadow = true
                     }
                 });
+                obj.name = `${i}`
+                Str.push(obj)
                 scene.add(obj)
             })
         }
@@ -130,7 +135,7 @@ function init() {
         let Hbox = [0.15, 0.1]
         let Hpos = [0.04, 0.02]
         hnd.rotation.y = 3.74
-        hnd.position.set(2.3691489319644323, 0.7115138787391861, 0.7892107868804573)
+        hnd.position.set(2.3807734163907077, 0.7137759073257822, 0.7781474088918205)
 
         for (let i = 0; i < Hpos.length; i++) {
             var pivot = new THREE.Group()
@@ -162,7 +167,7 @@ function init() {
 
         const resizeObserver = new ResizeObserver(() => {
             if (resizing) {
-                requestAnimationFrame(render);
+                requestAnimationFrame(render)
             } else {
                 updateSize()
             }
@@ -182,7 +187,9 @@ function init() {
             renderer.render(scene, camera)
             raycaster.setFromCamera( mouse, camera )
 
-            intersects = raycaster.intersectObjects( scene.children, true).filter(a => a.object.name != "map")
+            intersects = raycaster.intersectObjects( scene.children, true).filter(a => a.object.name != "map").filter(a => a.object.parent.name != "ping")
+
+            
 
             if (intersects.length > 0) {
                 if (intObject != intersects[0].object) {
@@ -205,22 +212,33 @@ function init() {
             }
         }
 
+        setInterval(quality, 3000)
         function animate() {
             requestAnimationFrame(animate)
             FpsSum()
+            try {
+                let pings = []
+                for (let i=0; i<scene.children.length; i++) {
+                    if (scene.children[i].name == "19" || scene.children[i].name == "ping") {
+                        pings.push(scene.children[i])
+                    }
+                }
+                for (let i=0; i<pings.length; i++) {
+                    pings[i].rotation.y += 0.005
+                }
+            } catch {}
             render()
         }
         animate()
-        setInterval(quality, 3000)
 
         function onDocumentMouseMove(event) {
-            event.preventDefault();
+            event.preventDefault()
 
-            const canvasX = event.clientX - rect.left;
-            const canvasY = event.clientY - rect.top;
+            const canvasX = event.clientX - rect.left
+            const canvasY = event.clientY - rect.top
 
-            mouse.x = (canvasX / rect.width) * 2 - 1;
-            mouse.y = - (canvasY / rect.height) * 2 + 1;
+            mouse.x = (canvasX / rect.width) * 2 - 1
+            mouse.y = - (canvasY / rect.height) * 2 + 1
         }
 
         function FpsSum() {
@@ -233,7 +251,7 @@ function init() {
             if (avgFPS != Infinity) {
                 if (avgFPS < 30 && dirLight.shadow.mapSize.width > 512) {
                     shadowResize(0.5)
-                } else if ((avgFPS > 60) && (dirLight.shadow.mapSize.width < 4096) && (avgFPS < 100)) {
+                } else if ((avgFPS > 60) && (dirLight.shadow.mapSize.width < 8192) && (avgFPS < 100)) {
                     shadowResize(2)
                 }
             }
@@ -243,8 +261,8 @@ function init() {
         function shadowResize(fct) {
             dirLight.shadow.mapSize.width *= fct
             dirLight.shadow.mapSize.height *= fct
-            dirLight.shadow.map.dispose();
-            dirLight.shadow.map = null;
+            dirLight.shadow.map.dispose()
+            dirLight.shadow.map = null
         }
         
     } else {
@@ -254,3 +272,64 @@ function init() {
 }
 
 init()
+
+export function pings(arr) {
+    clearPings()
+    color(arr)
+    for (let i = 0; i < arr.length; i++) {
+        loader.load(`../src/assets/models/19.glb`, (gltf) => {
+            let obj = gltf.scene
+            obj.scale.set(0.3, 0.3, 0.3)
+            obj.position.set(pos[arr[i]][0], 1.8, pos[arr[i]][1])
+            obj.rotation.y = Math.random()*2*Math.PI
+            obj.traverse((child) => {
+                if (child.isMesh) {
+                    if (child.material) {
+                        child.material = new THREE.MeshStandardMaterial({ color: child.material.color, map: child.material.map })
+                        child.material.side = THREE.DoubleSide
+                    }
+                    child.geometry.computeVertexNormals()
+                }
+            });
+            obj.name = "ping"
+            scene.add(obj)
+        })
+    }    
+}
+
+function color(arr) {
+    scene.traverse((object) => {
+        if (arr.indexOf(parseInt(object.name)) != -1) {
+            object.children.forEach((child) => {
+                if (child.type == "Mesh") {
+                    if (child.material && child.material.color) {
+                        child.material.color.setHex(0xcabfa3)
+                    }
+                }
+            })
+        }
+    })
+}
+
+export function clearPings() {
+    clearColor()
+    for (let i = scene.children.length - 1; i >= 0; i--) {
+        if (scene.children[i].name == "ping") {
+            scene.remove(scene.children[i])
+        }
+    }
+}
+
+function clearColor() {
+    scene.traverse((object) => {
+        if (object.type == "Group" && object.name != "map" && object.name != "") {
+            object.children.forEach((child) => {
+                if (child.type == "Mesh") {
+                    if (child.material && child.material.color) {
+                        child.material.color.setHex(0xe7e7e7)
+                    }
+                }
+            })
+        }
+    })
+}
