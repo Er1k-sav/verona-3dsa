@@ -17,20 +17,20 @@ export let pos =   [[3.3, 2.94, -2.44, 0.3], //FERMO
                     [3.12, 0.31, 2.17, 0.06], //ROMEO
                     [2.74, 0.24, 3.74, 0.06], //CANGRANDE
                     [-1.8, 2.15, 0.15, 0.025], //CASTELVECCHIO
-                    [-3.8, -3, 1.57, 0.7], //FIUME
+                    [/*-3.8, -3*/4.5, 0.3, 1.57, 0.4], //FIUME
                     [0, 3.7, -0.4, 0.1]] //MURA
 
-export let names = ["San Fermo", "Sant' Eufemia", "Santa Anastasia", "Torre dei Lamberti", "Torre del Gardello", "Torre della Catena", "Torre di Alberto I", "Corte Sgarzarie", "Ponte Pietra", "Ponte Navi", "Ponte Nuovo", "Domus Mercatorum", "Madonna Verona", "Case Mazzanti", "Arche Scaligere", "Palazzo del Capitanio", "Casa di Romeo", "Palazzo Cangrande", "Castelvecchio", "Fiume", "Mura Scaligere"]
+export let names = ["San Fermo", "Sant' Eufemia", "Santa Anastasia", "Torre dei Lamberti", "Torre del Gardello", "Torre della Catena", "Torre di Alberto I", "Corte Sgarzarie", "Ponte Pietra", "Ponte Navi", "Ponte Nuovo", "Domus Mercatorum", "Madonna Verona", "Case Mazzanti", "Arche Scaligere", "Palazzo del Capitanio", "Casa di Romeo", "Palazzo Cangrande", "Castelvecchio", "Fiume & Isolo", "Mura Scaligere"]
 
-export let mapIDs = ["Chiesa di San Fermo Maggiore", "Chiesa di Sant'Eufemia  Verona", "Basilica di Santa Anastasia Piazza S.Anastasia", "Torre dei Lamberti", "Torre del Gardello", "Torre della Catena", "Torre di Ponte Pietra", "Area archeologica di Corte Sgarzerie", "Ponte Pietra Bridge", "Ponte Navi Bridge", "Ponte Nuovo Ponte Nuovo Bridge", "Domus Mercatorum", "Fontana Madonna Verona ", "Case dei Mazzanti Historical", "Arche Scaligere", "Palazzo di Cansignorio", "Casa di Romeo Via Arche Scaligere 3A", "Palazzo del Podestà Verona", "Ponte di Castelvecchio", "Verona", "Verona"]
+export let mapIDs = ["Chiesa di San Fermo Maggiore", "Chiesa di Sant'Eufemia  Verona", "Basilica di Santa Anastasia Piazza S.Anastasia", "Torre dei Lamberti", "Torre del Gardello", "Torre della Catena", "Torre di Ponte Pietra", "Area archeologica di Corte Sgarzerie", "Ponte Pietra Bridge", "Ponte Navi Bridge", "Ponte Nuovo Ponte Nuovo Bridge", "Domus Mercatorum", "Fontana Madonna Verona ", "Case dei Mazzanti Historical", "Arche Scaligere", "Palazzo di Cansignorio", "Casa di Romeo Via Arche Scaligere 3A", "Palazzo del Podestà Verona", "Ponte di Castelvecchio", "Piazza Isolo Verona", "Verona"]
 
 export let iOpnH = ["Lun-Ven => 10-17 </br> Sab-Dom => 10-17:30", "Lun-Dom => 9:30-11:30 16-19:30", "Lun-Ven => 10-17 </br> Sab => 9:30-18 </br> Dom => 13-17:30", "Lun-Ven => 10-18 </br> Mer => Chiuso </br> Sab-Dom => 11-19", "Non Visitabile", "Non Visitabile", "24h/24", "Sab => 10-12 </br> Dom => 10-12:30", "24h/24", "24h/24", "24h/24", "/", "24h/24", "/", "/", "/", "24h/24", "/", "24h/24", "24h/24", "24h/24"]
 
-export let iAdr = ["Via Dogana, 2, 37121 Verona VR", "Piazzetta Sant'Eufemia, 1, 37121 Verona VR", "Piazza S.Anastasia, 37121 Verona VR", "Via della Costa, 1, 37121 Verona VR", "Via della Costa, 1, 37121 Verona VR", "37126 Verona VR", "Via Ponte Pietra, 34, 37121 Verona VR", "Corte Sgarzarie, 8, 37121 Verona VR", "37121 Verona VR", "Ponte delle Navi, 37121 Verona VR", "Ponte Nuovo, 37121 Verona VR", "Piazza Erbe, 17, 37121 Verona VR", "Piazza Erbe, 37121 Verona VR", "Piazza Erbe, 32/A, 37121 Verona VR", "Via S. Maria Antica, 4, 37121 Verona VR", "P.za dei Signori, 22, 37121 Verona VR", "Via Arche Scaligere, 3a, 37121 Verona VR", "P.za dei Signori, 37121 Verona VR", "Corso Castelvecchio, 2, 37121 Verona VR", "37121 Verona VR", "37121 Verona VR"]
+export let iAdr = ["Via Dogana, 2, 37121 Verona VR", "Piazzetta Sant'Eufemia, 1, 37121 Verona VR", "Piazza S.Anastasia, 37121 Verona VR", "Via della Costa, 1, 37121 Verona VR", "Via della Costa, 1, 37121 Verona VR", "37126 Verona VR", "Via Ponte Pietra, 34, 37121 Verona VR", "Corte Sgarzarie, 8, 37121 Verona VR", "37121 Verona VR", "Ponte delle Navi, 37121 Verona VR", "Ponte Nuovo, 37121 Verona VR", "Piazza Erbe, 17, 37121 Verona VR", "Piazza Erbe, 37121 Verona VR", "Piazza Erbe, 32/A, 37121 Verona VR", "Via S. Maria Antica, 4, 37121 Verona VR", "P.za dei Signori, 22, 37121 Verona VR", "Via Arche Scaligere, 3a, 37121 Verona VR", "P.za dei Signori, 37121 Verona VR", "Corso Castelvecchio, 2, 37121 Verona VR", "37129 Verona VR", "37121 Verona VR"]
 
-export let pStr = [[14, 15, 17], [18, 14, 2], [17, 14, 16]]
+export let pStr = [[0, 14, 16, 17], [5, 8, 9, 10, 18, 20], [3, 4, 6], [8, 9, 10, 18, 19], [0, 1, 2]]
 
-export let pName = ["Dante", "Cavalieri", "Romeo & Giulietta"]
+export let pName = ["Dante", "Cavalieri", "Torri", "Ponti", "Cattedrali"]
 
 let Elm = []
 for (let i = 0; i < pos.length; i++) {

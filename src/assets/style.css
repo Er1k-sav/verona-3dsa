@@ -231,6 +231,58 @@ body {
     font-family: var(--f2);
 }
 
+#mOpts {
+    display: flex;
+}
+
+#optsBox {
+    width: 100%;
+    height: 70%;
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: 15% 40% 15%;
+}
+
+#volSvgBox {
+    color: white;
+    height: 100%;
+    aspect-ratio: 1;
+    justify-self: end;
+    margin-right: 10%;
+}
+
+#Ivol {
+    width: 80%;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    appearance: none;
+}
+
+#Ivol::-webkit-slider-runnable-track {
+    background-color: var(--c41);
+    height: 3px;
+    cursor: pointer;
+    transition: 0.2s all;
+}
+
+#Ivol::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    aspect-ratio: 1;
+    margin-top: -6px;
+    background: var(--c3);
+    border-radius: 100%;
+}
+
+#Ovol {
+    height: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+}
+
 #info {
     position: absolute;
     height: 100%;
@@ -459,14 +511,22 @@ body {
 
     #menuBox {
         grid-template-columns: 0% 100%;
-        grid-template-rows: min-content 1fr;
-        overflow: scroll !important;
+        grid-template-rows: 13% 68% 8%;
     }
 
     #mBody {
         grid-column: span 2;
-        min-height: 100%;
-        height: fit-content;
+        height: 90%;
+        overflow: scroll !important;
+    }
+
+    #mOpts {
+        width: 100%;
+        height: 100%;
+        margin-bottom: 5%;
+        justify-content: center;
+        align-items: start;
+        grid-column: 2 span;
     }
 
     #mLogo {
@@ -601,7 +661,7 @@ body {
     #menuBox {
         transform: translateX(-20vw);
         grid-template-columns: 100%;
-        grid-template-rows: 20% 5% 75%;
+        grid-template-rows: 20% 5% 70% 5%;
     }
     
     #mSvg {
@@ -623,6 +683,13 @@ body {
     
     #mBody {
         margin: 5%;
+    }
+
+    #mOpts {
+        width: calc(100% - 0.5vh);
+        height: calc(100% - 0.5vh);
+        margin: 0% 0% 0.5vh 0.5vh;
+        align-items: end;
     }
 
     #map {

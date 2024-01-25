@@ -47,6 +47,11 @@ app.get("/src/assets/images/IISlogo.png", (req, res) => {
     res.type("image/png")
 });
 
+app.get("/src/assets/track.mp3", (req, res) => {
+    res.sendFile(__dirname + "/src/assets/track.mp3")
+    res.type("audio/mpeg")
+});
+
 for (let i = 0; i < 21; i++) {
     app.get(`/src/assets/models/${i}.glb`, (req, res) => {
         res.sendFile(__dirname + `/src/assets/models/${i}.glb`);

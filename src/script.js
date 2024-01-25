@@ -8,13 +8,18 @@ const svgArrow1 = document.getElementById('svgArrow1')
 const svgArrow2 = document.getElementById('svgArrow2')
 const svgLine = document.getElementById('svgLine')
 const bInput = document.getElementById("bIsrc")
+const Ivol = document.getElementById("Ivol")
+const track = document.getElementById("track")
 var bMenu = false
 var bPhone = false
 var bInfo = false
 var bSrc = false
+var bVol = false
 var curPath = -1
 infoOff()
 pathInit()
+track.play()
+updateVol()
 if (window.innerWidth < 769) {
     bPhone = true
 }
@@ -265,3 +270,41 @@ function clearPath() {
         document.getElementById(`pI_${i}`).innerHTML = ""
     }
 }
+
+Ivol.addEventListener("mousedown", (e) => {
+    bVol = true;
+    updateVolThumb(e);
+})
+
+Ivol.addEventListener("mouseup", () => {
+    bVol = false;
+})
+
+Ivol.addEventListener("mousemove", (e) => {
+    e.preventDefault();
+    if(bVol) {
+        updateVolThumb(e);
+    }
+})
+
+function updateVolThumb(e) {
+    let x = e.pageX - Ivol.offsetLeft
+    let width = Ivol.offsetWidth
+    let percentage = x / width
+    let value = percentage * (Ivol.max - Ivol.min)
+    Ivol.value = value
+
+    updateVol()
+}
+
+Ivol.addEventListener("change", updateVol)
+
+function updateVol() {
+    document.getElementById("Ovol").innerHTML = Ivol.value + "%"
+    track.volume = Ivol.value/100
+}
+
+track.addEventListener("ended", function() {
+    this.currentTime = 0
+    this.play()
+}, false)
