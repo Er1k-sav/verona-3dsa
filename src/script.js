@@ -221,7 +221,6 @@ function src() {
         document.getElementById("results").innerHTML += elm.outerHTML
     }
 }
-
 function pathInit() {
     const mBody = document.getElementById("mBody");
     for (let i = 0; i < pName.length; i++) {
