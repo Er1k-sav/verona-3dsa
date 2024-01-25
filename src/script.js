@@ -230,6 +230,7 @@ function pathInit() {
         Elm.innerHTML = `${pName[i]}`
         Elm.id = `p_${i}`
         Elm1.id = `pI_${i}`
+        Elm1.className = "path1"
         Elm1.style.marginLeft = "3vw"
         Elm.addEventListener("click", () => {
             pathClick(i)
