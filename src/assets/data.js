@@ -28,7 +28,7 @@ export let iOpnH = ["Lun-Ven => 10-17 </br> Sab-Dom => 10-17:30", "Lun-Dom => 9:
 
 export let iAdr = ["Via Dogana, 2, 37121 Verona VR", "Piazzetta Sant'Eufemia, 1, 37121 Verona VR", "Piazza S.Anastasia, 37121 Verona VR", "Via della Costa, 1, 37121 Verona VR", "Via della Costa, 1, 37121 Verona VR", "37126 Verona VR", "Via Ponte Pietra, 34, 37121 Verona VR", "Corte Sgarzarie, 8, 37121 Verona VR", "37121 Verona VR", "Ponte delle Navi, 37121 Verona VR", "Ponte Nuovo, 37121 Verona VR", "Piazza Erbe, 17, 37121 Verona VR", "Piazza Erbe, 37121 Verona VR", "Piazza Erbe, 32/A, 37121 Verona VR", "Via S. Maria Antica, 4, 37121 Verona VR", "P.za dei Signori, 22, 37121 Verona VR", "Via Arche Scaligere, 3a, 37121 Verona VR", "P.za dei Signori, 37121 Verona VR", "Corso Castelvecchio, 2, 37121 Verona VR", "37121 Verona VR", "37121 Verona VR"]
 
-export let pStr = [[0, 1, 2, 3], [4, 5, 6, 7, 8, 9], [10, 11, 12]]
+export let pStr = [[14, 15, 17], [18, 14, 2], [17, 14, 16]]
 
 export let pName = ["Dante", "Cavalieri", "Romeo & Giulietta"]
 
