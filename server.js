@@ -17,6 +17,11 @@ app.get("/src/assets/style.css", (req, res) => {
     res.type("css")
 });
 
+app.get("/musica.mp3", (req, res) => {
+    res.sendFile(__dirname + "/musica.mp3");
+    res.type("audio/mpeg");
+});
+
 app.get("/src/main.js", (req, res) => {
     res.sendFile(__dirname + "/src/main.js")
     res.type("application/javascript")
