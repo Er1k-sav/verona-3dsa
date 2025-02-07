@@ -30,7 +30,7 @@ export let iAdr = ["Via Dogana, 2, 37121 Verona VR", "Piazzetta Sant'Eufemia, 1,
 
 export let pStr = [[18, 0, 14, 3, 4, 2]/*, [0, 14, 16, 17], [5, 8, 9, 10, 18, 20], [3, 4, 6], [8, 9, 10, 18, 19], [0, 1, 2]*/]
 
-export let pName = ["🇨🇱 Cileni 🇨🇱"/*, "Dante", "Cavalieri", "Torri", "Ponti", "Cattedrali"*/]
+export let pName = ["🇨🇱 Cile 🇨🇱"/*, "Dante", "Cavalieri", "Torri", "Ponti", "Cattedrali"*/]
 
 let Elm = []
 for (let i = 0; i < pos.length; i++) {
